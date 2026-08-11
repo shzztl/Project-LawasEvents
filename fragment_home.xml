@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <!-- Lawas Background -->
+    <ImageView
+        android:id="@+id/imgLawasBackground"
+
+        android:layout_width="0dp"
+        android:layout_height="230dp"
+
+        android:src="@drawable/lawas"
+        android:scaleType="centerCrop"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Dark Overlay -->
+    <View
+        android:layout_width="0dp"
+        android:layout_height="230dp"
+
+        android:background="#55000000"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- App Name -->
+    <TextView
+        android:id="@+id/txtAppName"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="LAWAS EVENTIA"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/imgLawasBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Upcoming Events Title -->
+    <TextView
+        android:id="@+id/txtUpcoming"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Upcoming Events"
+        android:textColor="#2E5D34"
+        android:textSize="21sp"
+        android:textStyle="bold"
+
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="20dp"
+
+        app:layout_constraintTop_toBottomOf="@id/imgLawasBackground"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Swipeable Posters -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerEvents"
+
+        android:layout_width="0dp"
+        android:layout_height="280dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+
+        app:layout_constraintTop_toBottomOf="@id/txtUpcoming"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
