@@ -1,4 +1,4 @@
-package com.example.lawasevents;
+package com.example.lawaseventia;
 
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -20,9 +20,13 @@ public class GalleryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_gallery);
 
-        // Find views
+        // ==========================================
+        // FIND VIEWS
+        // ==========================================
+
         txtGalleryTitle = findViewById(
                 R.id.txtGalleryTitle
         );
@@ -34,44 +38,138 @@ public class GalleryActivity extends AppCompatActivity {
         image5 = findViewById(R.id.image5);
         image6 = findViewById(R.id.image6);
 
-        // Get category from previous page
-        String category =
-                getIntent().getStringExtra("category");
 
-        // Change title according to category
-        if (category != null) {
+        // ==========================================
+        // GET EVENT ID
+        // ==========================================
+
+        String eventId =
+                getIntent().getStringExtra("eventId");
+
+
+        // ==========================================
+        // LOAD GALLERY
+        // ==========================================
+
+        loadGallery(eventId);
+    }
+
+
+    // ==============================================
+    // LOAD THE CORRECT EVENT GALLERY
+    // ==============================================
+
+    private void loadGallery(String eventId) {
+        if (eventId == null) {
+
+            txtGalleryTitle.setText("Event Gallery");
+
+            return;
+        }
+
+
+        // ==========================================
+        // PESTA LAWAS 2025
+        // ==========================================
+
+        if (eventId.equals("pesta_lawas_2025")) {
             txtGalleryTitle.setText(
-                    category + " Events"
+                    "Pesta Lawas 2025"
+            );
+
+            image1.setImageResource(
+                    R.drawable.pesta_lawas_2025_1
+            );
+
+            image2.setImageResource(
+                    R.drawable.pesta_lawas_2025_2
+            );
+
+            image3.setImageResource(
+                    R.drawable.pesta_lawas_2025_3
+            );
+
+            image4.setImageResource(
+                    R.drawable.pesta_lawas_2025_4
+            );
+
+            image5.setImageResource(
+                    R.drawable.pesta_lawas_2025_5
+            );
+
+            image6.setImageResource(
+                    R.drawable.pesta_lawas_2025_6
             );
         }
 
-        // Load gallery images
-        loadGalleryImages();
-    }
 
-    private void loadGalleryImages() {
-        image1.setImageResource(
-                R.drawable.past_event1
-        );
+        // ==========================================
+        // LAWAS FOOD FESTIVAL 2025
+        // ==========================================
 
-        image2.setImageResource(
-                R.drawable.past_event2
-        );
+        else if (eventId.equals("food_festival_2025")) {
+            txtGalleryTitle.setText(
+                    "Lawas Food Festival 2025"
+            );
 
-        image3.setImageResource(
-                R.drawable.past_event3
-        );
+            image1.setImageResource(
+                    R.drawable.food_festival_2025_1
+            );
 
-        image4.setImageResource(
-                R.drawable.past_event4
-        );
+            image2.setImageResource(
+                    R.drawable.food_festival_2025_2
+            );
 
-        image5.setImageResource(
-                R.drawable.past_event5
-        );
+            image3.setImageResource(
+                    R.drawable.food_festival_2025_3
+            );
 
-        image6.setImageResource(
-                R.drawable.past_event6
-        );
+            image4.setImageResource(
+                    R.drawable.food_festival_2025_4
+            );
+
+            image5.setImageResource(
+                    R.drawable.food_festival_2025_5
+            );
+
+            image6.setImageResource(
+                    R.drawable.food_festival_2025_6
+            );
+        }
+
+
+        // ==========================================
+        // CULTURAL NIGHT 2025
+        // ==========================================
+
+        else if (eventId.equals("cultural_night_2025")) {
+            txtGalleryTitle.setText(
+                    "Lawas Cultural Night 2025"
+            );
+
+            image1.setImageResource(
+                    R.drawable.cultural_night_2025_1
+            );
+
+            image2.setImageResource(
+                    R.drawable.cultural_night_2025_2
+            );
+
+            image3.setImageResource(
+                    R.drawable.cultural_night_2025_3
+            );
+
+            image4.setImageResource(
+                    R.drawable.cultural_night_2025_4
+            );
+
+            image5.setImageResource(
+                    R.drawable.cultural_night_2025_5
+            );
+
+            image6.setImageResource(
+                    R.drawable.cultural_night_2025_6
+            );
+        }
     }
 }
