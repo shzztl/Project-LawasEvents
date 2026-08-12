@@ -1,108 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:background="#F5F5F5"
+    tools:context=".GalleryActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <!-- Page Title -->
-
-        <TextView
-            android:id="@+id/txtGalleryTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Past Events"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="#263238"
-            android:layout_marginBottom="16dp" />
-
-
-        <!-- Gallery Grid -->
-
-        <GridLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:rowCount="3"
-            android:alignmentMode="alignMargins"
-            android:useDefaultMargins="true">
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Gallery Title -->
+            <TextView
+                android:id="@+id/txtGalleryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Event Gallery"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="#263238"
+                android:layout_marginBottom="16dp" />
 
 
-            <!-- Image 1 -->
-
-            <ImageView
-                android:id="@+id/image1"
-                android:layout_width="0dp"
-                android:layout_height="180dp"
-                android:layout_columnWeight="1"
-                android:scaleType="centerCrop"
-                android:contentDescription="Past event photo" />
+            <!-- Gallery -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:alignmentMode="alignMargins"
+                android:useDefaultMargins="true">
 
 
-            <!-- Image 2 -->
-
-            <ImageView
-                android:id="@+id/image2"
-                android:layout_width="0dp"
-                android:layout_height="180dp"
-                android:layout_columnWeight="1"
-                android:scaleType="centerCrop"
-                android:contentDescription="Past event photo" />
-
-
-            <!-- Image 3 -->
-
-            <ImageView
-                android:id="@+id/image3"
-                android:layout_width="0dp"
-                android:layout_height="180dp"
-                android:layout_columnWeight="1"
-                android:scaleType="centerCrop"
-                android:contentDescription="Past event photo" />
+                <!-- Photo 1 -->
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="0dp"
+                    android:layout_height="180dp"
+                    android:layout_columnWeight="1"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Event photo" />
 
 
-            <!-- Image 4 -->
-
-            <ImageView
-                android:id="@+id/image4"
-                android:layout_width="0dp"
-                android:layout_height="180dp"
-                android:layout_columnWeight="1"
-                android:scaleType="centerCrop"
-                android:contentDescription="Past event photo" />
-
-
-            <!-- Image 5 -->
-
-            <ImageView
-                android:id="@+id/image5"
-                android:layout_width="0dp"
-                android:layout_height="180dp"
-                android:layout_columnWeight="1"
-                android:scaleType="centerCrop"
-                android:contentDescription="Past event photo" />
+                <!-- Photo 2 -->
+                <ImageView
+                    android:id="@+id/image2"
+                    android:layout_width="0dp"
+                    android:layout_height="180dp"
+                    android:layout_columnWeight="1"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Event photo" />
 
 
-            <!-- Image 6 -->
+                <!-- Photo 3 -->
 
-            <ImageView
-                android:id="@+id/image6"
-                android:layout_width="0dp"
-                android:layout_height="180dp"
-                android:layout_columnWeight="1"
-                android:scaleType="centerCrop"
-                android:contentDescription="Past event photo" />
+                <ImageView
+                    android:id="@+id/image3"
+                    android:layout_width="0dp"
+                    android:layout_height="180dp"
+                    android:layout_columnWeight="1"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Event photo" />
 
-        </GridLayout>
-    </LinearLayout>
 
+                <!-- Photo 4 -->
+                <ImageView
+                    android:id="@+id/image4"
+                    android:layout_width="0dp"
+                    android:layout_height="180dp"
+                    android:layout_columnWeight="1"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Event photo" />
+
+
+                <!-- Photo 5 -->
+                <ImageView
+                    android:id="@+id/image5"
+                    android:layout_width="0dp"
+                    android:layout_height="180dp"
+                    android:layout_columnWeight="1"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Event photo" />
+
+
+                <!-- Photo 6 -->
+                <ImageView
+                    android:id="@+id/image6"
+                    android:layout_width="0dp"
+                    android:layout_height="180dp"
+                    android:layout_columnWeight="1"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Event photo" />
+
+            </GridLayout>
+        </LinearLayout>
 </ScrollView>
