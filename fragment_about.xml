@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#F5F5F5">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imgLawas"
+
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+
+            android:src="@drawable/lawas"
+
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="About Lawas"
+            android:textSize="26sp"
+            android:textStyle="bold"
+
+            android:textColor="#263238"
+
+            android:padding="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Lawas is a town and district located in the northern part of Sarawak. It is known for its diverse communities, cultural heritage, local activities and beautiful natural surroundings."
+
+            android:textSize="16sp"
+            android:lineSpacingExtra="5dp"
+
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Local Attractions"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+            android:padding="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="• Punang Beach&#10;&#10;• Ba Kelalan Highlands&#10;&#10;• Long Tuma&#10;&#10;• Lawas Waterfront"
+
+            android:textSize="16sp"
+
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp" />
+
+    </LinearLayout>
+
+</ScrollView>
