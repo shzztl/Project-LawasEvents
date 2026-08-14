@@ -1,4 +1,4 @@
-package com.example.lawasevents;
+package com.example.lawaseventia;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -6,6 +6,7 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,35 +15,24 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
-
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
-
-    // Lawas image carousel
     private ViewPager2 viewPagerLawas;
     private LawasImageAdapter lawasImageAdapter;
-
-    // Upcoming event carousel
     private ViewPager2 viewPagerEvents;
-
-    // Image indicators
+    private EventAdapter eventAdapter;
     private LinearLayout lawasIndicators;
-
-    // Automatic slideshow
+    private LinearLayout eventIndicators;
+    private ImageButton btnEventPrevious;
+    private ImageButton btnEventNext;
     private Handler sliderHandler;
     private Runnable sliderRunnable;
-
-    // Change image every 3 seconds
     private static final long SLIDE_DELAY = 3000;
-
-    // Store Lawas images
     private ArrayList<Integer> lawasImages;
-
-    // Store upcoming events
     private ArrayList<Event> upcomingEvents;
 
-
+    // ON CREATE VIEW
     @Nullable
     @Override
     public View onCreateView(
@@ -55,72 +45,57 @@ public class HomeFragment extends Fragment {
                 container,
                 false
         );
-
-        // ==========================================
         // FIND VIEWS
-        // ==========================================
-
+        // Lawas image carousel
         viewPagerLawas = view.findViewById(
                 R.id.viewPagerLawas
         );
-
+        // Upcoming event carousel
         viewPagerEvents = view.findViewById(
                 R.id.viewPagerEvents
         );
-
+        // Lawas indicators
         lawasIndicators = view.findViewById(
                 R.id.lawasIndicators
         );
+        // Event indicators
+        eventIndicators = view.findViewById(
+                R.id.eventIndicators
+        );
+        // Event previous button
+        btnEventPrevious = view.findViewById(
+                R.id.btnEventPrevious
+        );
+        // Event next button
+        btnEventNext = view.findViewById(
+                R.id.btnEventNext
+        );
 
-
-        // ==========================================
         // LOAD LAWAS IMAGES
-        // ==========================================
-
         loadLawasImages();
-
-
-        // ==========================================
+        
         // SET LAWAS IMAGE ADAPTER
-        // ==========================================
-
-        lawasImageAdapter =
-                new LawasImageAdapter(lawasImages);
+        lawasImageAdapter = new LawasImageAdapter(lawasImages);
 
         viewPagerLawas.setAdapter(
                 lawasImageAdapter
         );
 
-
-        // ==========================================
-        // CREATE IMAGE INDICATORS
-        // ==========================================
-
+        // CREATE LAWAS IMAGE INDICATORS
         setupIndicators();
 
-
-        // ==========================================
-        // UPDATE INDICATOR WHEN USER SWIPES
-        // ==========================================
-
-        viewPagerLawas.registerOnPageChangeCallback(
-                new ViewPager2.OnPageChangeCallback() {
+        // UPDATE LAWAS INDICATOR WHEN USER SWIPES
+        viewPagerLawas.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
 
                     @Override
                     public void onPageSelected(int position) {
-
                         super.onPageSelected(position);
-
                         updateIndicators(position);
                     }
                 }
         );
 
-
-        // ==========================================
-        // AUTOMATIC SLIDESHOW
-        // ==========================================
-
+        // AUTOMATIC LAWAS IMAGE SLIDESHOW
         sliderHandler = new Handler(
                 Looper.getMainLooper()
         );
@@ -129,15 +104,10 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void run() {
-
-                if (lawasImages != null
-                        && !lawasImages.isEmpty()) {
-
-                    int nextPosition =
-                            viewPagerLawas.getCurrentItem() + 1;
+                if (lawasImages != null && !lawasImages.isEmpty()) {
+                    int nextPosition = viewPagerLawas.getCurrentItem() + 1;
 
                     if (nextPosition >= lawasImages.size()) {
-
                         nextPosition = 0;
                     }
 
@@ -154,67 +124,193 @@ public class HomeFragment extends Fragment {
             }
         };
 
-
-        // ==========================================
         // LOAD UPCOMING EVENTS
-        // ==========================================
-
         loadUpcomingEvents();
 
-
-        EventAdapter eventAdapter =
-                new EventAdapter(
-                        requireContext(),
-                        upcomingEvents
-                );
+        // SET UPCOMING EVENT ADAPTER
+        eventAdapter = new EventAdapter(
+                requireContext(),
+                upcomingEvents
+        );
 
         viewPagerEvents.setAdapter(
                 eventAdapter
         );
 
+        // CREATE EVENT INDICATORS
+        setupEventIndicators();
 
+        // UPDATE EVENT INDICATOR WHEN USER SWIPES
+        viewPagerEvents.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+
+                    @Override
+                    public void onPageSelected(int position) {
+                        super.onPageSelected(position);
+                        updateEventIndicators(position);
+                    }
+                }
+        );
+
+        // PREVIOUS EVENT BUTTON
+        btnEventPrevious.setOnClickListener(v -> {
+            int currentPosition =viewPagerEvents.getCurrentItem();
+
+            if (currentPosition > 0) {
+                viewPagerEvents.setCurrentItem(
+                        currentPosition - 1,
+                        true
+                );
+            }
+        });
+
+        // NEXT EVENT BUTTON
+        btnEventNext.setOnClickListener(v -> {
+            int currentPosition = viewPagerEvents.getCurrentItem();
+            
+            if (currentPosition < upcomingEvents.size() - 1) {
+                viewPagerEvents.setCurrentItem(
+                        currentPosition + 1,
+                        true
+                );
+            }
+        });
         return view;
     }
 
-
-    // =================================================
     // LAWAS IMAGES
-    // =================================================
-
     private void loadLawasImages() {
-
         lawasImages = new ArrayList<>();
-
+        
         lawasImages.add(
-                R.drawable.lawas_1
+                R.drawable.lawas1
         );
-
         lawasImages.add(
-                R.drawable.lawas_2
+                R.drawable.lawas2
         );
-
         lawasImages.add(
-                R.drawable.lawas_3
+                R.drawable.lawas3
         );
-
         lawasImages.add(
-                R.drawable.lawas_4
+                R.drawable.lawas4
+        );
+        lawasImages.add(
+                R.drawable.lawas5
         );
     }
 
-
-    // =================================================
-    // IMAGE INDICATORS
-    // =================================================
-
+    // LAWAS IMAGE INDICATORS
     private void setupIndicators() {
-
         lawasIndicators.removeAllViews();
 
         for (int i = 0; i < lawasImages.size(); i++) {
+            TextView indicator = new TextView(requireContext());
 
-            TextView indicator =
-                    new TextView(requireContext());
+            indicator.setText("●");
+            indicator.setTextSize(10);
+
+            indicator.setTextColor(
+                    ContextCompat.getColor(
+                            requireContext(),
+                            android.R.color.darker_gray
+                    )
+            );
+
+            LinearLayout.LayoutParams params =
+                    new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                    );
+
+            params.setMargins(
+                    5,
+                    0,
+                    5,
+                    0
+            );
+            indicator.setLayoutParams(params);
+
+            lawasIndicators.addView(
+                    indicator
+            );
+        }
+        updateIndicators(0);
+    }
+
+    // UPDATE LAWAS IMAGE INDICATORS
+    private void updateIndicators(int selectedPosition) {
+        if (lawasIndicators == null) {
+            return;
+        }
+
+        for (int i = 0; i < lawasIndicators.getChildCount(); i++) {
+            TextView indicator = (TextView) lawasIndicators.getChildAt(i);
+
+            if (i == selectedPosition) {
+                indicator.setTextColor(
+                        ContextCompat.getColor(
+                                requireContext(),
+                                android.R.color.white
+                        )
+                );
+            } else {
+                indicator.setTextColor(
+                        ContextCompat.getColor(
+                                requireContext(),
+                                android.R.color.darker_gray
+                        )
+                );
+            }
+        }
+    }
+
+    // UPCOMING EVENTS
+    private void loadUpcomingEvents() {
+        upcomingEvents = new ArrayList<>();
+
+        // EVENT 1
+        upcomingEvents.add(
+                new Event(
+                        "Pesta Lawas 2026",
+                        "15 October 2026",
+                        "Waterfront Lawas",
+                        "Festival",
+                        "Pesta Lawas is a community celebration featuring cultural performances, local food and community activities.",
+                        R.drawable.pesta_lawas
+                )
+        );
+
+        // EVENT 2
+        upcomingEvents.add(
+                new Event(
+                        "Pesta Orang Kampung",
+                        "16 September 2026",
+                        "Lawas Stadium",
+                        "Festival",
+                        "A community food festival encouraging healthy activities and community participation.",
+                        R.drawable.pesta_org_kpg
+                )
+        );
+
+        // EVENT 3
+        upcomingEvents.add(
+                new Event(
+                        "Hari Merdeka",
+                        "31 August 2026",
+                        "Lawas Community Hall",
+                        "Government",
+                        "An evening celebrating the diverse cultures and traditions of the Lawas community.",
+                        R.drawable.hari_merdeka
+                )
+        );
+    }
+
+    // EVENT INDICATORS
+    private void setupEventIndicators() {
+        eventIndicators.removeAllViews();
+
+        for (int i = 0; i < upcomingEvents.size(); i++) {
+
+            TextView indicator = new TextView(requireContext());
 
             indicator.setText("●");
             indicator.setTextSize(10);
@@ -241,39 +337,30 @@ public class HomeFragment extends Fragment {
 
             indicator.setLayoutParams(params);
 
-            lawasIndicators.addView(
+            eventIndicators.addView(
                     indicator
             );
         }
-
-        updateIndicators(0);
+        updateEventIndicators(0);
     }
 
-
-    private void updateIndicators(int selectedPosition) {
-
-        if (lawasIndicators == null) {
+    // UPDATE EVENT INDICATORS
+    private void updateEventIndicators(int selectedPosition) {
+        if (eventIndicators == null) {
             return;
         }
 
-        for (int i = 0;
-             i < lawasIndicators.getChildCount();
-             i++) {
-
-            TextView indicator =
-                    (TextView) lawasIndicators.getChildAt(i);
+        for (int i = 0; i < eventIndicators.getChildCount(); i++) {
+            TextView indicator = (TextView) eventIndicators.getChildAt(i);
 
             if (i == selectedPosition) {
-
                 indicator.setTextColor(
                         ContextCompat.getColor(
                                 requireContext(),
                                 android.R.color.white
                         )
                 );
-
             } else {
-
                 indicator.setTextColor(
                         ContextCompat.getColor(
                                 requireContext(),
@@ -284,65 +371,12 @@ public class HomeFragment extends Fragment {
         }
     }
 
-
-    // =================================================
-    // UPCOMING EVENTS
-    // =================================================
-
-    private void loadUpcomingEvents() {
-
-        upcomingEvents = new ArrayList<>();
-
-
-        upcomingEvents.add(
-                new Event(
-                        "Pesta Lawas 2026",
-                        "15 October 2026",
-                        "Waterfront Lawas",
-                        "Festival",
-                        "Pesta Lawas is a community celebration featuring cultural performances, local food and community activities.",
-                        R.drawable.pesta_lawas
-                )
-        );
-
-
-        upcomingEvents.add(
-                new Event(
-                        "Lawas Community Fun Run",
-                        "22 October 2026",
-                        "Lawas Town Centre",
-                        "Sports",
-                        "A community fun run encouraging healthy activities and community participation.",
-                        R.drawable.fun_run
-                )
-        );
-
-
-        upcomingEvents.add(
-                new Event(
-                        "Lawas Cultural Night",
-                        "5 November 2026",
-                        "Lawas Community Hall",
-                        "Cultural",
-                        "An evening celebrating the diverse cultures and traditions of the Lawas community.",
-                        R.drawable.cultural_night
-                )
-        );
-    }
-
-
-    // =================================================
-    // START AUTOMATIC SLIDESHOW
-    // =================================================
-
+    // START AUTOMATIC LAWAS SLIDESHOW
     @Override
     public void onResume() {
-
         super.onResume();
 
-        if (sliderHandler != null
-                && sliderRunnable != null) {
-
+        if (sliderHandler != null && sliderRunnable != null) {
             sliderHandler.postDelayed(
                     sliderRunnable,
                     SLIDE_DELAY
@@ -350,19 +384,13 @@ public class HomeFragment extends Fragment {
         }
     }
 
-
-    // =================================================
-    // STOP AUTOMATIC SLIDESHOW
-    // =================================================
-
+    // STOP AUTOMATIC LAWAS SLIDESHOW
     @Override
     public void onPause() {
 
         super.onPause();
 
-        if (sliderHandler != null
-                && sliderRunnable != null) {
-
+        if (sliderHandler != null && sliderRunnable != null) {
             sliderHandler.removeCallbacks(
                     sliderRunnable
             );
