@@ -73,7 +73,7 @@ public class HomeFragment extends Fragment {
 
         // LOAD LAWAS IMAGES
         loadLawasImages();
-        
+
         // SET LAWAS IMAGE ADAPTER
         lawasImageAdapter = new LawasImageAdapter(lawasImages);
 
@@ -86,14 +86,12 @@ public class HomeFragment extends Fragment {
 
         // UPDATE LAWAS INDICATOR WHEN USER SWIPES
         viewPagerLawas.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-
-                    @Override
-                    public void onPageSelected(int position) {
-                        super.onPageSelected(position);
-                        updateIndicators(position);
-                    }
-                }
-        );
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                updateIndicators(position);
+            }
+        });
 
         // AUTOMATIC LAWAS IMAGE SLIDESHOW
         sliderHandler = new Handler(
@@ -101,7 +99,6 @@ public class HomeFragment extends Fragment {
         );
 
         sliderRunnable = new Runnable() {
-
             @Override
             public void run() {
                 if (lawasImages != null && !lawasImages.isEmpty()) {
@@ -116,7 +113,6 @@ public class HomeFragment extends Fragment {
                             true
                     );
                 }
-
                 sliderHandler.postDelayed(
                         this,
                         SLIDE_DELAY
@@ -142,18 +138,16 @@ public class HomeFragment extends Fragment {
 
         // UPDATE EVENT INDICATOR WHEN USER SWIPES
         viewPagerEvents.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-
-                    @Override
-                    public void onPageSelected(int position) {
-                        super.onPageSelected(position);
-                        updateEventIndicators(position);
-                    }
-                }
-        );
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                updateEventIndicators(position);
+            }
+        });
 
         // PREVIOUS EVENT BUTTON
         btnEventPrevious.setOnClickListener(v -> {
-            int currentPosition =viewPagerEvents.getCurrentItem();
+            int currentPosition = viewPagerEvents.getCurrentItem();
 
             if (currentPosition > 0) {
                 viewPagerEvents.setCurrentItem(
@@ -166,7 +160,7 @@ public class HomeFragment extends Fragment {
         // NEXT EVENT BUTTON
         btnEventNext.setOnClickListener(v -> {
             int currentPosition = viewPagerEvents.getCurrentItem();
-            
+
             if (currentPosition < upcomingEvents.size() - 1) {
                 viewPagerEvents.setCurrentItem(
                         currentPosition + 1,
@@ -180,7 +174,7 @@ public class HomeFragment extends Fragment {
     // LAWAS IMAGES
     private void loadLawasImages() {
         lawasImages = new ArrayList<>();
-        
+
         lawasImages.add(
                 R.drawable.lawas1
         );
@@ -270,36 +264,56 @@ public class HomeFragment extends Fragment {
         // EVENT 1
         upcomingEvents.add(
                 new Event(
-                        "Pesta Lawas 2026",
-                        "15 October 2026",
-                        "Waterfront Lawas",
-                        "Festival",
-                        "Pesta Lawas is a community celebration featuring cultural performances, local food and community activities.",
-                        R.drawable.pesta_lawas
+                        "45th Anniversary Celebration of LCDA",
+                        "23 August 2026",
+                        "6.45 am - 8.00 am",
+                        "FREE ENTRY Open to public",
+                        "Lawas Town Square",
+                        "Government",
+                        "A special celebration held in conjunction with the 45th Anniversary of LCDA, featuring a fun and energetic aerobics and Zumba session for the local community. Participants are encouraged to dress in the colours of the Sarawak flag to create a vibrant and festive atmosphere while promoting a healthy and active lifestyle. The event brings the community together through music, exercise, and celebration.",
+                        R.drawable.anniv_lcda
                 )
         );
 
         // EVENT 2
         upcomingEvents.add(
                 new Event(
+                        "Sambutan Maulidur Rasul",
+                        "25 August 2026",
+                        "7.00 am - 1.00 pm",
+                        "FREE ENTRY Open to public",
+                        "Lawas Town Square",
+                        "Government",
+                        "Join the community in commemorating Sambutan Maulidur Rasul 2026 through a meaningful Mawlid procession (Perarakan Maulidur Rasul), selawat, religious activities, and community gatherings. The celebration honours the life and teachings of Prophet Muhammad (PBUH) while promoting faith, unity, and community spirit.",
+                        R.drawable.maulidur_rasul
+                )
+        );
+
+        //EVENT 3
+        upcomingEvents.add(
+                new Event(
                         "Pesta Orang Kampung",
-                        "16 September 2026",
+                        "2 - 6 September 2026",
+                        "3.00 pm - 11.00 pm",
+                        "FREE ENTRY Open to public",
                         "Lawas Stadium",
                         "Festival",
-                        "A community food festival encouraging healthy activities and community participation.",
+                        "Pesta Orang Kampung (POK) Lawas 2026 brings the community together for a vibrant celebration of local culture, traditions, food, and entertainment. Enjoy delicious local food, cultural performances, traditional activities, and exciting community competitions while experiencing the unique kampung spirit of Lawas.",
                         R.drawable.pesta_org_kpg
                 )
         );
 
-        // EVENT 3
+        // EVENT 4
         upcomingEvents.add(
                 new Event(
-                        "Hari Merdeka",
-                        "31 August 2026",
-                        "Lawas Community Hall",
-                        "Government",
-                        "An evening celebrating the diverse cultures and traditions of the Lawas community.",
-                        R.drawable.hari_merdeka
+                        "Pesta Lawas 2026",
+                        "15 October 2026",
+                        "10.00 am - 11.00 pm",
+                        "FREE ENTRY Open to public",
+                        "Waterfront Lawas",
+                        "Festival",
+                        "Pesta Lawas 2026 celebrates the rich culture and community spirit of Lawas with a variety of activities, including a lively Floating Market featuring local food and products, as well as an exciting Regatta Boat competition showcasing the town's river heritage. Join us for a memorable celebration filled with culture, food, entertainment, and community activities.",
+                        R.drawable.pesta_lawas
                 )
         );
     }
@@ -387,7 +401,6 @@ public class HomeFragment extends Fragment {
     // STOP AUTOMATIC LAWAS SLIDESHOW
     @Override
     public void onPause() {
-
         super.onPause();
 
         if (sliderHandler != null && sliderRunnable != null) {
