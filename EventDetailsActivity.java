@@ -1,4 +1,4 @@
-package com.example.lawasevents;
+package com.example.lawaseventia;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -11,33 +11,22 @@ public class EventDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_event_details);
 
-        ImageView image =
-                findViewById(R.id.imgEvent);
-
-        TextView title =
-                findViewById(R.id.txtTitle);
-
-        TextView date =
-                findViewById(R.id.txtDate);
-
-        TextView venue =
-                findViewById(R.id.txtVenue);
-
-        TextView category =
-                findViewById(R.id.txtCategory);
-
-        TextView description =
-                findViewById(R.id.txtDescription);
+        ImageView image = findViewById(R.id.imgEvent);
+        TextView title = findViewById(R.id.txtTitle);
+        TextView date = findViewById(R.id.txtDate);
+        TextView time = findViewById(R.id.txtTime);
+        TextView entrance = findViewById(R.id.txtEntrance);
+        TextView venue = findViewById(R.id.txtVenue);
+        TextView category = findViewById(R.id.txtCategory);
+        TextView description = findViewById(R.id.txtDescription);
 
         image.setImageResource(
                 getIntent().getIntExtra(
                         "image",
-                        R.drawable.lawas
+                        R.drawable.lawas1
                 )
         );
 
@@ -47,6 +36,14 @@ public class EventDetailsActivity extends AppCompatActivity {
 
         date.setText(
                 getIntent().getStringExtra("date")
+        );
+
+        date.setText(
+                getIntent().getStringExtra("time")
+        );
+
+        date.setText(
+                getIntent().getStringExtra("entrance")
         );
 
         venue.setText(
