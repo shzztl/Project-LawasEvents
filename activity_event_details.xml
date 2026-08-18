@@ -10,11 +10,9 @@
         android:id="@+id/btnBack"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_margin="12dp"
         android:background="@android:color/transparent"
         android:src="@drawable/arrow_back"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:contentDescription="Back" />
 
     <ImageView
         android:id="@+id/imgLogo"
@@ -186,6 +184,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="[ View on Calendar ]"
+        android:textSize="15sp"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:background="@android:color/transparent" />
