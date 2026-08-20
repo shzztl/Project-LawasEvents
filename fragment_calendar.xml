@@ -1,63 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000"
 
-    android:background="#F5F5F5">
+    tools:context=".CalendarFragment">
 
     <LinearLayout
-
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
-        android:orientation="vertical"
-        android:padding="16dp">
+        <!-- BACK BUTTON -->
+        <ImageButton
+            android:id="@+id/btnCalendarBack"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/arrow_back"
+            android:contentDescription="Back" />
 
+        <!-- TITLE -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="CALENDAR EVENT"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            android:text="Event Calendar"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="#263238"
-
-            android:layout_marginBottom="15dp" />
-
-        <CalendarView
-            android:id="@+id/calendarView"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:background="@android:color/white" />
-
-        <TextView
-            android:id="@+id/txtSelectedDate"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="Select a date to view events"
-            android:textSize="18sp"
-            android:textStyle="bold"
-
-            android:layout_marginTop="20dp" />
-
-        <TextView
-            android:id="@+id/txtCalendarEvent"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:text="No event selected."
-            android:textSize="16sp"
-
-            android:layout_marginTop="10dp" />
-
+        <Space
+            android:layout_width="45dp"
+            android:layout_height="45dp" />
     </LinearLayout>
 
-</ScrollView>
+    <!-- CALENDAR CARD -->
+    <LinearLayout
+        android:id="@+id/calendarCard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:background="@drawable/calendar_background">
+
+        <!-- MONTH HEADER -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/txtMonthYear"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textColor="#45546A"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <!-- PREVIOUS MONTH -->
+            <ImageButton
+                android:id="@+id/btnPreviousMonth"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/arrow_back"
+                android:contentDescription="Previous month" />
+
+            <!-- NEXT MONTH -->
+            <ImageButton
+                android:id="@+id/btnNextMonth"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/arrow_next"
+                android:contentDescription="Next month" />
+        </LinearLayout>
+
+        <!-- DAYS OF WEEK -->
+        <GridLayout
+            android:id="@+id/weekHeader"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:columnCount="7"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:text="Mo"
+                style="@style/CalendarWeekText" />
+
+            <TextView
+                android:text="Tu"
+                style="@style/CalendarWeekText" />
+
+            <TextView
+                android:text="We"
+                style="@style/CalendarWeekText" />
+
+            <TextView
+                android:text="Th"
+                style="@style/CalendarWeekText" />
+
+            <TextView
+                android:text="Fr"
+                style="@style/CalendarWeekText" />
+
+            <TextView
+                android:text="Sa"
+                style="@style/CalendarWeekText" />
+
+            <TextView
+                android:text="Su"
+                style="@style/CalendarWeekText" />
+        </GridLayout>
+
+        <!-- CALENDAR DATES -->
+        <GridLayout
+            android:id="@+id/calendarGrid"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:columnCount="7"
+            android:rowCount="6"
+            android:alignmentMode="alignMargins" />
+    </LinearLayout>
+
+    <!-- EVENT SECTION -->
+    <LinearLayout
+        android:id="@+id/eventSection"
+        android:layout_width="match_parent"
+        android:layout_height="235dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="5dp"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:background="@drawable/event_section_background">
+
+        <!-- EVENT COUNT -->
+        <TextView
+            android:id="@+id/txtEventCount"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!-- SELECTED DATE -->
+        <TextView
+            android:id="@+id/txtSelectedDate"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:text=""
+            android:textColor="#DCD3E8"
+            android:textSize="11sp" />
+
+        <!-- EVENT CONTENT -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/eventContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" />
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>
