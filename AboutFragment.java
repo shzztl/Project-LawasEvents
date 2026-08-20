@@ -16,15 +16,16 @@ import androidx.viewpager2.widget.ViewPager2;
 import java.util.ArrayList;
 
 public class AboutFragment extends Fragment {
+
     private ViewPager2 viewPagerAttractions;
     private LinearLayout attractionIndicators;
     private Handler handler;
     private Runnable autoSlideRunnable;
-
     private ArrayList<Integer> attractionImages;
     private ArrayList<String> attractionNames;
     private int currentPage = 0;
-    
+
+
     @Nullable
     @Override
     public View onCreateView(
@@ -48,79 +49,60 @@ public class AboutFragment extends Fragment {
 
         viewPagerAttractions = view.findViewById(R.id.viewPagerAttractions);
         attractionIndicators = view.findViewById(R.id.attractionIndicators);
-        
+
+        //ATTRACTION IMAGES
         attractionImages = new ArrayList<>();
-        attractionImages.add(
-                R.drawable.punang
-        );
 
-        attractionImages.add(
-                R.drawable.lawas_waterfront
-        );
+        attractionImages.add(R.drawable.punang);
+        attractionImages.add(R.drawable.lawas_waterfront);
+        attractionImages.add(R.drawable.lawas_hotspring);
+        attractionImages.add(R.drawable.lawas_nature);
 
-        attractionImages.add(
-                R.drawable.lawas_hotspring
-        );
-
-        attractionImages.add(
-                R.drawable.lawas_nature
-        );
-
+        //ATTRACTION NAMES
         attractionNames = new ArrayList<>();
-        attractionNames.add(
-                "Punang Nature Walk"
-        );
+        
+        attractionNames.add("Punang Nature Walk");
+        attractionNames.add("Lawas Waterfront");
+        attractionNames.add("Lawas Hot Springs");
+        attractionNames.add("Lawas Natural Attractions");
 
-        attractionNames.add(
-                "Lawas Waterfront"
-        );
-
-        attractionNames.add(
-                "Lawas Hot Springs"
-        );
-
-        attractionNames.add(
-                "Lawas Natural Attractions"
-        );
-
+        //ADAPTER
         AttractionAdapter adapter = new AttractionAdapter(
-                        attractionImages,
-                        attractionNames
-                );
+                    attractionImages,
+                    attractionNames
+            );
 
         viewPagerAttractions.setAdapter(adapter);
+
+        //INDICATOR
         createIndicators();
-        
+
+        //PAGE CHANGE
         viewPagerAttractions.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
                     @Override
                     public void onPageSelected(int position) {
-
-                        super.onPageSelected(position);
                         currentPage = position;
                         updateIndicators(position);
                     }
                 }
         );
-        
+
+        //AUTO SLIDE
         handler = new Handler(Looper.getMainLooper());
 
         autoSlideRunnable = new Runnable() {
-
             @Override
             public void run() {
-                if (attractionImages != null && attractionImages.size() > 0) {
-
+                if (attractionImages.size() > 0) {
                     currentPage++;
 
                     if (currentPage >= attractionImages.size()) {
                         currentPage = 0;
                     }
-
                     viewPagerAttractions.setCurrentItem(
                             currentPage,
                             true
                     );
-
                     handler.postDelayed(
                             this,
                             3000
@@ -143,25 +125,14 @@ public class AboutFragment extends Fragment {
             TextView indicator = new TextView(requireContext());
 
             indicator.setText("●");
-            indicator.setTextSize(10);
-            indicator.setTextColor(
-                    getResources().getColor(
-                            android.R.color.darker_gray
-                    )
-            );
+            indicator.setTextSize(9);
 
-            LinearLayout.LayoutParams params =
-                    new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
-                    );
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                );
 
-            params.setMargins(
-                    5,
-                    0,
-                    5,
-                    0
-            );
+            params.setMargins(5, 0, 5, 0);
 
             attractionIndicators.addView(
                     indicator,
@@ -170,22 +141,21 @@ public class AboutFragment extends Fragment {
         }
         updateIndicators(0);
     }
-    
+
     private void updateIndicators(int position) {
-        
         for (int i = 0; i < attractionIndicators.getChildCount(); i++) {
 
-            TextView indicator = (TextView) attractionIndicators.getChildAt(i);
+            TextView indicator = (TextView)attractionIndicators.getChildAt(i);
 
             if (i == position) {
                 indicator.setTextColor(
-                        getResources().getColor(
+                        requireContext().getColor(
                                 android.R.color.white
                         )
                 );
             } else {
                 indicator.setTextColor(
-                        getResources().getColor(
+                        requireContext().getColor(
                                 android.R.color.darker_gray
                         )
                 );
@@ -197,20 +167,19 @@ public class AboutFragment extends Fragment {
     public void onPause() {
         super.onPause();
 
-        if (handler != null && autoSlideRunnable != null) {
-
+        if (handler != null) {
             handler.removeCallbacks(
                     autoSlideRunnable
             );
         }
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
 
-        if (handler != null && autoSlideRunnable != null) {
-
+        if (handler != null) {
             handler.postDelayed(
                     autoSlideRunnable,
                     3000
@@ -221,9 +190,8 @@ public class AboutFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-
-        if (handler != null && autoSlideRunnable != null) {
-
+        
+        if (handler != null) {
             handler.removeCallbacks(
                     autoSlideRunnable
             );
