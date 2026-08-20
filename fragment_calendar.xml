@@ -162,6 +162,16 @@
             android:textSize="15sp"
             android:textStyle="bold" />
 
+        <!-- SELECTED DATE LABEL -->
+        <TextView
+            android:id="@+id/txtSelectedDateLabel"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="Selected Date"
+            android:textColor="#DCD3E8"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+        
         <!-- SELECTED DATE -->
         <TextView
             android:id="@+id/txtSelectedDate"
@@ -169,7 +179,8 @@
             android:layout_height="22dp"
             android:text=""
             android:textColor="#DCD3E8"
-            android:textSize="11sp" />
+            android:textSize="11sp"
+            android:textStyle="bold"/>
 
         <!-- EVENT CONTENT -->
         <ScrollView
