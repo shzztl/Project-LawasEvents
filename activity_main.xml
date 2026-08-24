@@ -28,6 +28,6 @@
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
         app:itemRippleColor="@android:color/transparent"
-        app:itemActiveIndicatorStyle="#E6D7FF" />
+        app:itemActiveIndicatorColor="#E6D7FF" />
 
 </LinearLayout>
