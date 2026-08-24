@@ -8,16 +8,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#000000"
-
     tools:context=".CalendarFragment">
 
+    <!-- BACK BUTTON + TITLE -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
-        <!-- BACK BUTTON -->
         <ImageButton
             android:id="@+id/btnCalendarBack"
             android:layout_width="45dp"
@@ -26,7 +25,6 @@
             android:src="@drawable/arrow_back"
             android:contentDescription="Back" />
 
-        <!-- TITLE -->
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -72,7 +70,6 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <!-- PREVIOUS MONTH -->
             <ImageButton
                 android:id="@+id/btnPreviousMonth"
                 android:layout_width="35dp"
@@ -81,7 +78,6 @@
                 android:src="@drawable/arrow_back"
                 android:contentDescription="Previous month" />
 
-            <!-- NEXT MONTH -->
             <ImageButton
                 android:id="@+id/btnNextMonth"
                 android:layout_width="35dp"
@@ -99,31 +95,24 @@
             android:columnCount="7"
             android:orientation="horizontal">
 
-
             <TextView
                 android:text="Mo"
                 style="@style/CalendarWeekText" />
-
             <TextView
                 android:text="Tu"
                 style="@style/CalendarWeekText" />
-
             <TextView
                 android:text="We"
                 style="@style/CalendarWeekText" />
-
             <TextView
                 android:text="Th"
                 style="@style/CalendarWeekText" />
-
             <TextView
                 android:text="Fr"
                 style="@style/CalendarWeekText" />
-
             <TextView
                 android:text="Sa"
                 style="@style/CalendarWeekText" />
-
             <TextView
                 android:text="Su"
                 style="@style/CalendarWeekText" />
@@ -145,8 +134,8 @@
         android:id="@+id/eventSection"
         android:layout_width="match_parent"
         android:layout_height="235dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="9dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="5dp"
         android:padding="10dp"
@@ -169,9 +158,9 @@
             android:layout_height="20dp"
             android:text="Selected Date"
             android:textColor="#DCD3E8"
-            android:textSize="10sp"
+            android:textSize="11sp"
             android:textStyle="bold" />
-        
+
         <!-- SELECTED DATE -->
         <TextView
             android:id="@+id/txtSelectedDate"
@@ -179,8 +168,8 @@
             android:layout_height="22dp"
             android:text=""
             android:textColor="#DCD3E8"
-            android:textSize="11sp"
-            android:textStyle="bold"/>
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
         <!-- EVENT CONTENT -->
         <ScrollView
@@ -192,9 +181,8 @@
             <LinearLayout
                 android:id="@+id/eventContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical" />
         </ScrollView>
     </LinearLayout>
-
 </LinearLayout>
