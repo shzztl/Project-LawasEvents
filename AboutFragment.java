@@ -53,14 +53,14 @@ public class AboutFragment extends Fragment {
         //ATTRACTION IMAGES
         attractionImages = new ArrayList<>();
 
-        attractionImages.add(R.drawable.punang);
+        attractionImages.add(R.drawable.lawas_punang);
         attractionImages.add(R.drawable.lawas_waterfront);
         attractionImages.add(R.drawable.lawas_hotspring);
         attractionImages.add(R.drawable.lawas_nature);
 
         //ATTRACTION NAMES
         attractionNames = new ArrayList<>();
-        
+
         attractionNames.add("Punang Nature Walk");
         attractionNames.add("Lawas Waterfront");
         attractionNames.add("Lawas Hot Springs");
@@ -68,9 +68,9 @@ public class AboutFragment extends Fragment {
 
         //ADAPTER
         AttractionAdapter adapter = new AttractionAdapter(
-                    attractionImages,
-                    attractionNames
-            );
+                attractionImages,
+                attractionNames
+        );
 
         viewPagerAttractions.setAdapter(adapter);
 
@@ -79,13 +79,12 @@ public class AboutFragment extends Fragment {
 
         //PAGE CHANGE
         viewPagerAttractions.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-                    @Override
-                    public void onPageSelected(int position) {
-                        currentPage = position;
-                        updateIndicators(position);
-                    }
-                }
-        );
+            @Override
+            public void onPageSelected(int position) {
+                currentPage = position;
+                updateIndicators(position);
+            }
+        });
 
         //AUTO SLIDE
         handler = new Handler(Looper.getMainLooper());
@@ -110,11 +109,6 @@ public class AboutFragment extends Fragment {
                 }
             }
         };
-
-        handler.postDelayed(
-                autoSlideRunnable,
-                3000
-        );
     }
 
     private void createIndicators() {
@@ -128,9 +122,9 @@ public class AboutFragment extends Fragment {
             indicator.setTextSize(9);
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                );
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
 
             params.setMargins(5, 0, 5, 0);
 
@@ -180,6 +174,11 @@ public class AboutFragment extends Fragment {
         super.onResume();
 
         if (handler != null) {
+
+            handler.removeCallbacks(
+                    autoSlideRunnable
+            );
+
             handler.postDelayed(
                     autoSlideRunnable,
                     3000
@@ -190,7 +189,7 @@ public class AboutFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        
+
         if (handler != null) {
             handler.removeCallbacks(
                     autoSlideRunnable
