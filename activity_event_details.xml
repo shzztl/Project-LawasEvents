@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
@@ -26,7 +26,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        android:scrollbars="none"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="4dp"
@@ -51,11 +50,11 @@
                 <ImageView
                     android:id="@+id/imgEvent"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitCenter"
+                    android:layout_height="338dp"
                     android:background="#000000"
-                    android:contentDescription="Event poster" />
-                
+                    android:contentDescription="Event poster"
+                    android:scaleType="fitCenter" />
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -64,7 +63,7 @@
                 android:layout_marginTop="0dp"
                 app:cardCornerRadius="25dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="#89938E">
+                app:cardBackgroundColor="#807B2DFF" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -95,8 +94,7 @@
                         android:paddingEnd="8dp"
                         android:paddingTop="3dp"
                         android:paddingBottom="3dp"
-                        android:background="@drawable/category_background"
-                        android:text="Festival"
+                        android:background="@drawable/bg_category"
                         android:textColor="@android:color/white"
                         android:textSize="11sp" />
 
@@ -127,7 +125,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:paddingStart="10dp">
 
                             <TextView
                                 android:id="@+id/txtDate"
@@ -149,7 +148,7 @@
                     <Button
                         android:id="@+id/btnViewCalendar"
                         android:layout_width="wrap_content"
-                        android:layout_height="38dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="4dp"
                         android:backgroundTint="#7B2DFF"
@@ -158,13 +157,13 @@
                         android:textColor="@android:color/white"
                         android:textSize="12sp" />
 
-                    
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical" >
 
                         <TextView
                             android:layout_width="35dp"
@@ -177,7 +176,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:paddingStart="10dp" >
 
                             <TextView
                                 android:id="@+id/txtLocation"
@@ -200,7 +200,7 @@
                     <Button
                         android:id="@+id/btnLocation"
                         android:layout_width="wrap_content"
-                        android:layout_height="38dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="4dp"
                         android:backgroundTint="#7B2DFF"
@@ -209,13 +209,13 @@
                         android:textColor="@android:color/white"
                         android:textSize="12sp" />
 
-                    
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical" >
 
                         <TextView
                             android:layout_width="35dp"
@@ -228,10 +228,11 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:paddingStart="10dp" >
 
                             <TextView
-                                android:id="@+id/txtEntrance"
+                                android:id="@+id/txtEntrance1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/white"
@@ -239,9 +240,9 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:id="@+id/txtEntrance2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Open to public"
                                 android:textColor="@android:color/white"
                                 android:textSize="12sp" />
 
@@ -269,6 +270,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:justificationMode="inter_word"
                         android:lineSpacingExtra="2dp"
                         android:textColor="@android:color/white"
                         android:textSize="13sp" />
@@ -308,26 +310,9 @@
                         android:layout_marginTop="5dp"
                         android:textColor="@android:color/white"
                         android:textSize="13sp" />
-                    
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
-    
-    <!-- BOTTOM NAVIGATION -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="0dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
-        android:background="@drawable/nbg_bottom_menu"
-        app:itemIconTint="@null"
-        app:itemTextColor="@color/white"
-        app:menu="@menu/bottom_menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
