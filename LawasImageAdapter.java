@@ -1,18 +1,14 @@
-package com.example.lawasevents;
+package com.example.lawaseventia;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
-public class LawasImageAdapter
-        extends RecyclerView.Adapter<LawasImageAdapter.LawasImageViewHolder> {
-
+public class LawasImageAdapter extends RecyclerView.Adapter<LawasImageAdapter.LawasImageViewHolder> {
     private final ArrayList<Integer> images;
 
     public LawasImageAdapter(ArrayList<Integer> images) {
@@ -21,21 +17,14 @@ public class LawasImageAdapter
 
     @NonNull
     @Override
-    public LawasImageViewHolder onCreateViewHolder(
-            @NonNull ViewGroup parent,
-            int viewType) {
-
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_lawas_image, parent, false);
+    public LawasImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lawas_image, parent, false);
 
         return new LawasImageViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(
-            @NonNull LawasImageViewHolder holder,
-            int position) {
-
+    public void onBindViewHolder(@NonNull LawasImageViewHolder holder, int position) {
         holder.imageView.setImageResource(
                 images.get(position)
         );
@@ -46,9 +35,7 @@ public class LawasImageAdapter
         return images.size();
     }
 
-    public static class LawasImageViewHolder
-            extends RecyclerView.ViewHolder {
-
+    public static class LawasImageViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
 
         public LawasImageViewHolder(@NonNull View itemView) {
@@ -60,4 +47,3 @@ public class LawasImageAdapter
         }
     }
 }
-```
