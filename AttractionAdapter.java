@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class AttractionAdapter extends RecyclerView.Adapter<AttractionAdapter.AttractionViewHolder> {
     private ArrayList<Integer> images;
     private ArrayList<String> names;
-    
+
     public AttractionAdapter(
             ArrayList<Integer> images,
             ArrayList<String> names) {
@@ -21,7 +21,7 @@ public class AttractionAdapter extends RecyclerView.Adapter<AttractionAdapter.At
         this.images = images;
         this.names = names;
     }
-    
+
     @NonNull
     @Override
     public AttractionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -51,7 +51,7 @@ public class AttractionAdapter extends RecyclerView.Adapter<AttractionAdapter.At
     public int getItemCount() {
         return images.size();
     }
-    
+
     public static class AttractionViewHolder extends RecyclerView.ViewHolder {
         ImageView imgAttraction;
         TextView txtAttractionName;
@@ -63,4 +63,4 @@ public class AttractionAdapter extends RecyclerView.Adapter<AttractionAdapter.At
             txtAttractionName = itemView.findViewById(R.id.txtAttractionName);
         }
     }
-}}
+}
