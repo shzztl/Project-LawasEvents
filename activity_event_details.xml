@@ -31,7 +31,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintTop_toBottomOf="@id/btnBack"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -43,14 +43,14 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="230dp"
+                android:layout_height="338dp"
                 app:cardCornerRadius="18dp"
                 app:cardElevation="0dp">
 
                 <ImageView
                     android:id="@+id/imgEvent"
                     android:layout_width="match_parent"
-                    android:layout_height="338dp"
+                    android:layout_height="match_parent"
                     android:background="#000000"
                     android:contentDescription="Event poster"
                     android:scaleType="fitCenter" />
