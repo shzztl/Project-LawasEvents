@@ -4,28 +4,38 @@ public class Event {
     private String title;
     private String date;
     private String time;
-    private String entrance;
-    private String venue;
+    private String entrance1;
+    private String entrance2;
+    private String location;
     private String category;
     private String description;
+    private String attractions;
+    private String organizer;
     private int imageResource;
 
     public Event(
             String title,
             String date,
             String time,
-            String entrance,
-            String venue,
+            String entrance1,
+            String entrance2,
+            String location,
             String category,
             String description,
+            String attractions,
+            String organizer,
             int imageResource ){
 
         this.title = title;
         this.date = date;
-        this.entrance = entrance;
-        this.venue = venue;
+        this.time = time;
+        this.entrance1 = entrance1;
+        this.entrance2 = entrance2;
+        this.location = location;
         this.category = category;
         this.description = description;
+        this.attractions = attractions;
+        this.organizer = organizer;
         this.imageResource = imageResource;
     }
 
@@ -41,12 +51,16 @@ public class Event {
         return time;
     }
 
-    public String getEntrance() {
-        return entrance;
+    public String getEntrance1() {
+        return entrance1;
     }
 
-    public String getVenue() {
-        return venue;
+    public String getEntrance2(){
+        return entrance2;
+    }
+
+    public String getLocation() {
+        return location;
     }
 
     public String getCategory() {
@@ -55,6 +69,14 @@ public class Event {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getAttractions() {
+        return attractions;
+    }
+
+    public String getOrganizer() {
+        return organizer;
     }
 
     public int getImageResource() {
