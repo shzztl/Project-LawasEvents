@@ -1,5 +1,4 @@
 package com.example.lawaseventia;
-
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -25,9 +24,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-
 public class CalendarFragment extends Fragment {
-
     private TextView txtMonthYear;
     private TextView txtEventCount;
     private TextView txtSelectedDate;
@@ -68,7 +65,7 @@ public class CalendarFragment extends Fragment {
         txtSelectedDate = view.findViewById(R.id.txtSelectedDate);
         calendarGrid = view.findViewById(R.id.calendarGrid);
         eventContainer = view.findViewById(R.id.eventContainer);
-        
+
         ImageButton previousMonth = view.findViewById(R.id.btnPreviousMonth);
         ImageButton nextMonth = view.findViewById(R.id.btnNextMonth);
         ImageButton backButton = view.findViewById(R.id.btnCalendarBack);
@@ -143,7 +140,7 @@ public class CalendarFragment extends Fragment {
                                 + "entertainment and the Floating Market."
                 )
         );
-        
+
         addEvent(
                 "2026-10-15",
                 new EventData(
@@ -200,10 +197,10 @@ public class CalendarFragment extends Fragment {
         );
 
         addEvent(
-                "2026-08-27",
+                "2026-08-25",
                 new EventData(
                         "Sambutan Maulidur Rasul 2026",
-                        "27 August 2026",
+                        "25 August 2026",
                         "8.00 am - 12.00 pm",
                         "Dataran Bandar Lawas",
                         "Religious",
@@ -283,7 +280,7 @@ public class CalendarFragment extends Fragment {
                                 + "and entertainment."
                 )
         );
-        
+
     }
 
     // ADD EVENT TO MAP
@@ -303,9 +300,9 @@ public class CalendarFragment extends Fragment {
         calendarGrid.removeAllViews();
 
         SimpleDateFormat monthFormat = new SimpleDateFormat(
-                        "MMMM yyyy",
-                        Locale.ENGLISH
-                );
+                "MMMM yyyy",
+                Locale.ENGLISH
+        );
 
 
         txtMonthYear.setText(
@@ -369,14 +366,14 @@ public class CalendarFragment extends Fragment {
         params.height = 0;
 
         params.columnSpec = GridLayout.spec(
-                    GridLayout.UNDEFINED,
-                    1f
-            );
+                GridLayout.UNDEFINED,
+                1f
+        );
 
         params.rowSpec = GridLayout.spec(
-                     GridLayout.UNDEFINED,
-                    1f
-            );
+                GridLayout.UNDEFINED,
+                1f
+        );
 
         empty.setLayoutParams(params);
 
@@ -395,7 +392,7 @@ public class CalendarFragment extends Fragment {
         );
 
         date.setTextSize(
-                9
+                10
         );
 
         date.setGravity(
@@ -417,20 +414,20 @@ public class CalendarFragment extends Fragment {
         params.height = 0;
 
         params.columnSpec = GridLayout.spec(
-                    GridLayout.UNDEFINED,
-                    1f
-            );
+                GridLayout.UNDEFINED,
+                1f
+        );
 
         params.rowSpec = GridLayout.spec(
-                    GridLayout.UNDEFINED,
-                    1f
-            );
+                GridLayout.UNDEFINED,
+                1f
+        );
 
         params.setMargins(
-                2,
-                2,
-                2,
-                2
+                5,
+                5,
+                5,
+                5
         );
         date.setLayoutParams(params);
 
@@ -442,7 +439,7 @@ public class CalendarFragment extends Fragment {
 
         // HIGHLIGHT EVENT DATE
         if (events.containsKey(key)) {
-            
+
             date.setBackgroundResource(
                     R.drawable.calendar_event_date
             );
@@ -560,13 +557,13 @@ public class CalendarFragment extends Fragment {
         ImageView icon = new ImageView(requireContext());
 
         icon.setImageResource(
-                R.drawable.ic_calendar
+                R.drawable.ic_no_event
         );
 
         LinearLayout.LayoutParams iconParams =
                 new LinearLayout.LayoutParams(
-                        55,
-                        55
+                        105,
+                        105
                 );
 
         iconParams.gravity = Gravity.CENTER;
@@ -601,9 +598,9 @@ public class CalendarFragment extends Fragment {
 
         messageParams.setMargins(
                 0,
-                4,
+                20,
                 0,
-                0
+                20
         );
 
         message.setLayoutParams(
@@ -634,10 +631,10 @@ public class CalendarFragment extends Fragment {
         );
 
         card.setPadding(
-                12,
-                8,
-                12,
-                8
+                40,
+                25,
+                40,
+                25
         );
 
         card.setBackgroundResource(
@@ -664,9 +661,9 @@ public class CalendarFragment extends Fragment {
         TextView date = createEventText(
                 event.date
         );
-        
+
         // SEPARATOR
-        TextView separator = createEventText("------------------------------");
+        TextView separator = createEventText("------------------------------------------------------------------------------------------");
 
         separator.setTextColor(
                 Color.rgb(
@@ -687,7 +684,7 @@ public class CalendarFragment extends Fragment {
                 null,
                 Typeface.BOLD
         );
-        
+
         TextView time = createEventText(event.time);
         TextView location =createEventText(event.location);
 
@@ -716,7 +713,7 @@ public class CalendarFragment extends Fragment {
                 card
         );
     }
-    
+
     // CREATE EVENT TEXT
     private TextView createEventText(String text) {
         TextView textView = new TextView(requireContext());
@@ -741,10 +738,10 @@ public class CalendarFragment extends Fragment {
         );
         return textView;
     }
-    
+
     // CREATE DATE KEY
     private String getDateKey(int year, int month, int day) {
-        
+
         return String.format(
                 Locale.ENGLISH,
                 "%04d-%02d-%02d",
