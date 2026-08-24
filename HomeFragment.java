@@ -265,12 +265,15 @@ public class HomeFragment extends Fragment {
         upcomingEvents.add(
                 new Event(
                         "45th Anniversary Celebration of LCDA",
-                        "23 August 2026",
+                        "23 August 2026, Saturday",
                         "6.45 am - 8.00 am",
-                        "FREE ENTRY Open to public",
+                        "FREE ENTRY",
+                        "Open to public",
                         "Lawas Town Square",
                         "Government",
                         "A special celebration held in conjunction with the 45th Anniversary of LCDA, featuring a fun and energetic aerobics and Zumba session for the local community. Participants are encouraged to dress in the colours of the Sarawak flag to create a vibrant and festive atmosphere while promoting a healthy and active lifestyle. The event brings the community together through music, exercise, and celebration.",
+                        "",
+                        "",
                         R.drawable.anniv_lcda
                 )
         );
@@ -279,12 +282,15 @@ public class HomeFragment extends Fragment {
         upcomingEvents.add(
                 new Event(
                         "Sambutan Maulidur Rasul",
-                        "25 August 2026",
+                        "25 August 2026, Tuesday",
                         "7.00 am - 1.00 pm",
-                        "FREE ENTRY Open to public",
+                        "FREE ENTRY",
+                        "Open to public",
                         "Lawas Town Square",
                         "Government",
                         "Join the community in commemorating Sambutan Maulidur Rasul 2026 through a meaningful Mawlid procession (Perarakan Maulidur Rasul), selawat, religious activities, and community gatherings. The celebration honours the life and teachings of Prophet Muhammad (PBUH) while promoting faith, unity, and community spirit.",
+                        "",
+                        "",
                         R.drawable.maulidur_rasul
                 )
         );
@@ -293,12 +299,15 @@ public class HomeFragment extends Fragment {
         upcomingEvents.add(
                 new Event(
                         "Pesta Orang Kampung",
-                        "2 - 6 September 2026",
+                        "2 - 6 September 2026, Wednesday - Sunday",
                         "3.00 pm - 11.00 pm",
-                        "FREE ENTRY Open to public",
+                        "FREE ENTRY",
+                        "Open to public",
                         "Lawas Stadium",
                         "Festival",
                         "Pesta Orang Kampung (POK) Lawas 2026 brings the community together for a vibrant celebration of local culture, traditions, food, and entertainment. Enjoy delicious local food, cultural performances, traditional activities, and exciting community competitions while experiencing the unique kampung spirit of Lawas.",
+                        "",
+                        "",
                         R.drawable.pesta_org_kpg
                 )
         );
@@ -307,12 +316,15 @@ public class HomeFragment extends Fragment {
         upcomingEvents.add(
                 new Event(
                         "Pesta Lawas 2026",
-                        "15 October 2026",
+                        "14 - 18 October 2026, Wednesday - Sunday",
                         "10.00 am - 11.00 pm",
-                        "FREE ENTRY Open to public",
+                        "FREE ENTRY",
+                        "Open to public",
                         "Waterfront Lawas",
                         "Festival",
                         "Pesta Lawas 2026 celebrates the rich culture and community spirit of Lawas with a variety of activities, including a lively Floating Market featuring local food and products, as well as an exciting Regatta Boat competition showcasing the town's river heritage. Join us for a memorable celebration filled with culture, food, entertainment, and community activities.",
+                        "",
+                        "",
                         R.drawable.pesta_lawas
                 )
         );
