@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class EventDetailsActivity extends AppCompatActivity {
@@ -13,115 +14,63 @@ public class EventDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_details);
 
-        //Find Views
         ImageView image = findViewById(R.id.imgEvent);
         TextView title = findViewById(R.id.txtTitle);
         TextView date = findViewById(R.id.txtDate);
         TextView time = findViewById(R.id.txtTime);
-        TextView entrance = findViewById(R.id.txtEntrance);
-        TextView category = findViewById(R.id.txtCategory);
+        TextView entrance1 = findViewById(R.id.txtEntrance1);
+        TextView entrance2 = findViewById(R.id.txtEntrance2);
         TextView location = findViewById(R.id.txtLocation);
+        TextView category = findViewById(R.id.txtCategory);
         TextView description = findViewById(R.id.txtDescription);
         TextView attractions = findViewById(R.id.txtAttractions);
         TextView organizer = findViewById(R.id.txtOrganizer);
 
-        ImageButton btnBack = findViewById(R.id.btnBack);
-        Button btnViewCalendar = findViewById(R.id.btnViewCalendar);
-
-        //Get Event Info
-        String eventTitle = getIntent().getStringExtra("title");
-        String eventDate = getIntent().getStringExtra("date");
-        String eventTime = getIntent().getStringExtra("time");
-        String eventEntrance = getIntent().getStringExtra("entrance");
-        String eventCategory = getIntent().getStringExtra("category");
-        String eventLocation = getIntent().getStringExtra("location");
-        String eventDescription = getIntent().getStringExtra("description");
-        String eventAttractions = getIntent().getStringExtra("attractions");
-        String eventOrganizer = getIntent().getStringExtra("organizer");
-
-        //Display Image
         image.setImageResource(
                 getIntent().getIntExtra(
                         "image",
                         R.drawable.lawas1
                 )
         );
-        image.setImageResource(imageResource);
 
-        //Display Event Info
-        if (eventTitle != null) {
-            title.setText(eventTitle);
-        }
+        title.setText(
+                getIntent().getStringExtra("title")
+        );
 
-        if (eventDate != null) {
-            date.setText("📅 " + eventDate);
-        }
+        date.setText(
+                getIntent().getStringExtra("date")
+        );
 
-        if (eventTime != null) {
-            time.setText("🕒 " + eventTime);
-        }
+        time.setText(
+                getIntent().getStringExtra("time")
+        );
 
-        if (eventEntrance != null) {
-            entrance.setText("🎟 " + eventEntrance);
-        }
+        entrance1.setText(
+                getIntent().getStringExtra("entrance1")
+        );
 
-        if (eventCategory != null) {
-            category.setText("🏷 " + eventCategory);
-        }
+        entrance2.setText(
+                getIntent().getStringExtra("entrance2")
+        );
 
-        if (eventLocation != null) {
-            location.setText("📍 " + eventLocation);
-        }
+        location.setText(
+                getIntent().getStringExtra("location")
+        );
 
-        if (eventDescription != null) {
-            description.setText(eventDescription);
-        }
+        category.setText(
+                getIntent().getStringExtra("category")
+        );
 
-        if (eventAttractions != null) {
-            attractions.setText(eventAttractions);
-        }
+        description.setText(
+                getIntent().getStringExtra("description")
+        );
 
-        if (eventOrganizer != null) {
-            organizer.setText(eventOrganizer);
-        }
+        attractions.setText(
+                getIntent().getStringExtra("attractions")
+        );
 
-        btnBack.setOnClickListener(v -> {
-            finish();
-        });
-
-        // [View on Calendar]
-        btnViewCalendar.setOnClickListener(v -> {
-            Intent intent = new Intent(
-                    EventDetailsActivity.this,
-                    MainActivity.class
-            );
-
-            // Tell MainActivity to open Calendar
-            intent.putExtra(
-                    "openCalendar",
-                    true
-            );
-
-            // Send selected event date
-            intent.putExtra(
-                    "eventDate",
-                    eventDate
-            );
-
-            // Send selected event title
-            intent.putExtra(
-                    "eventTitle",
-                    eventTitle
-            );
-
-            // Return to existing MainActivity
-            intent.addFlags(
-                    Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                    Intent.FLAG_ACTIVITY_SINGLE_TOP
-            );
-
-            startActivity(intent);
-            finish();
-        });
+        organizer.setText(
+                getIntent().getStringExtra("organizer")
+        );
     }
 }
