@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,15 +45,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                 event.getImageResource()
         );
 
-        holder.txtEventTitle.setText(
-                event.getTitle()
-        );
-
-        holder.txtEventDate.setText(
-                event.getDate()
-        );
-
-        holder.itemView.setOnClickListener(v -> {
+        holder.imgEvent.setOnClickListener(v -> {
             Intent intent = new Intent(
                     context,
                     EventDetailsActivity.class
@@ -76,13 +67,18 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             );
 
             intent.putExtra(
-                    "entrance",
-                    event.getEntrance()
+                    "entrance1",
+                    event.getEntrance1()
             );
 
             intent.putExtra(
-                    "venue",
-                    event.getVenue()
+                    "entrance2",
+                    event.getEntrance2()
+            );
+
+            intent.putExtra(
+                    "location",
+                    event.getLocation()
             );
 
             intent.putExtra(
@@ -93,6 +89,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             intent.putExtra(
                     "description",
                     event.getDescription()
+            );
+
+            intent.putExtra(
+                    "attractions",
+                    event.getAttractions()
+            );
+
+            intent.putExtra(
+                    "organizer",
+                    event.getOrganizer()
             );
 
             intent.putExtra(
@@ -111,22 +117,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     static class EventViewHolder extends RecyclerView.ViewHolder {
         ImageView imgEvent;
-        TextView txtEventTitle;
-        TextView txtEventDate;
 
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imgEvent = itemView.findViewById(
                     R.id.imgEvent
-            );
-
-            txtEventTitle = itemView.findViewById(
-                    R.id.txtEventTitle
-            );
-
-            txtEventDate = itemView.findViewById(
-                    R.id.txtEventDate
             );
         }
     }
