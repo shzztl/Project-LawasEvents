@@ -11,6 +11,7 @@ public class Event {
     private String description;
     private String attractions;
     private String organizer;
+    private String calendarDate;
     private int imageResource;
 
     public Event(
@@ -24,6 +25,7 @@ public class Event {
             String description,
             String attractions,
             String organizer,
+            String calendarDate,
             int imageResource ){
 
         this.title = title;
@@ -36,6 +38,7 @@ public class Event {
         this.description = description;
         this.attractions = attractions;
         this.organizer = organizer;
+        this.calendarDate = calendarDate;
         this.imageResource = imageResource;
     }
 
@@ -77,6 +80,10 @@ public class Event {
 
     public String getOrganizer() {
         return organizer;
+    }
+
+    public String getCalendarDate() {
+        return calendarDate;
     }
 
     public int getImageResource() {
