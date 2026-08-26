@@ -102,6 +102,11 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             );
 
             intent.putExtra(
+                    "calendarDate",
+                    event.getCalendarDate()
+            );
+
+            intent.putExtra(
                     "image",
                     event.getImageResource()
             );
