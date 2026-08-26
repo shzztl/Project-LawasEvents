@@ -49,8 +49,8 @@ public class EventDetailsActivity extends AppCompatActivity {
                     EventDetailsActivity.this, 
                     CalendarActivity.class);
 
-            String eventDate = getIntent().getStringExtra("calendarDate");
-            intent.putExtra("calendarDate", eventDate);
+            String calendarDate = getIntent().getStringExtra("calendarDate");
+            intent.putExtra("calendarDate", calendarDate);
         
             startActivity(intent);
         });
