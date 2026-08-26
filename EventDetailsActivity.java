@@ -48,10 +48,9 @@ public class EventDetailsActivity extends AppCompatActivity {
             Intent intent = new Intent(
                     EventDetailsActivity.this, 
                     CalendarActivity.class);
-        
-            intent.putExtra("event_day", 2);
-            intent.putExtra("event_month", 8); // September = 8 because Calendar.MONTH starts at 0
-            intent.putExtra("event_year", 2026);
+
+            String eventDate = getIntent().getStringExtra("calendarDate");
+            intent.putExtra("calendarDate", eventDate);
         
             startActivity(intent);
         });
