@@ -32,6 +32,9 @@ public class CalendarFragment extends Fragment {
     private LinearLayout eventContainer;
     private Calendar currentMonth;
 
+    private String calendarDate;
+    private int selectedDay = -1;
+
     // Stores all event information
     private final Map<String, List<EventData>> events = new HashMap<>();
 
@@ -73,11 +76,47 @@ public class CalendarFragment extends Fragment {
         // INITIAL MONTH
         currentMonth = Calendar.getInstance();
 
-        currentMonth.set(
-                2026,
-                Calendar.AUGUST,
-                1
-        );
+        if (getArguments() != null) {
+            calendarDate = getArguments().getString("calendarDate");
+        }
+        
+        if (calendarDate != null && !calendarDate.isEmpty()) {
+        
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(
+                            "yyyy-MM-dd",
+                            Locale.ENGLISH
+                    );
+        
+                Calendar eventCalendar = Calendar.getInstance();
+        
+                eventCalendar.setTime(
+                        dateFormat.parse(calendarDate)
+                );
+        
+                currentMonth.set(
+                        eventCalendar.get(Calendar.YEAR),
+                        eventCalendar.get(Calendar.MONTH),
+                        1
+                );
+        
+                selectedDay = eventCalendar.get(
+                        Calendar.DAY_OF_MONTH
+                );
+            } catch (Exception e) {
+                currentMonth.set(
+                        2026,
+                        Calendar.AUGUST,
+                        1
+                );
+            }
+        } else {
+            currentMonth.set(
+                    2026,
+                    Calendar.AUGUST,
+                    1
+            );
+        }
 
         // LOAD EVENTS
         loadEvents();
@@ -353,6 +392,21 @@ public class CalendarFragment extends Fragment {
         // ADD DATES
         for (int day = 1; day <= daysInMonth; day++) {
             addDate(day);
+        }
+
+        // AUTOMATICALLY SELECT EVENT DATE
+        if (selectedDay != -1) {
+        
+            String selectedKey = getDateKey(
+                    currentMonth.get(Calendar.YEAR),
+                    currentMonth.get(Calendar.MONTH),
+                    selectedDay
+            );
+        
+            selectDate(
+                    selectedKey,
+                    selectedDay
+            );
         }
     }
 
