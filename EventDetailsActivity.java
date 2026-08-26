@@ -30,6 +30,7 @@ public class EventDetailsActivity extends AppCompatActivity {
 
         ImageButton btnBack = findViewById(R.id.btnBack);
         Button btnMap = findViewById(R.id.btnMap);
+        Button btnViewCalendar = findViewById(R.id.btnViewCalendar);
 
         btnBack.setOnClickListener(v -> {
             finish();
@@ -41,7 +42,18 @@ public class EventDetailsActivity extends AppCompatActivity {
                     MapActivity.class
             );
             startActivity(intent);
+        });
+
+        btnViewCalendar.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    EventDetailsActivity.this, 
+                    CalendarActivity.class);
         
+            intent.putExtra("event_day", 2);
+            intent.putExtra("event_month", 8); // September = 8 because Calendar.MONTH starts at 0
+            intent.putExtra("event_year", 2026);
+        
+            startActivity(intent);
         });
 
         image.setImageResource(
