@@ -1,6 +1,8 @@
 package com.example.lawaseventia;
 
 import android.os.Bundle;
+import android.content.Intent;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,9 +29,19 @@ public class EventDetailsActivity extends AppCompatActivity {
         TextView organizer = findViewById(R.id.txtOrganizer);
 
         ImageButton btnBack = findViewById(R.id.btnBack);
+        Button btnMap = findViewById(R.id.btnMap);
 
         btnBack.setOnClickListener(v -> {
             finish();
+        });
+
+        btnMap.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    EventDetailsActivity.this,
+                    MapActivity.class
+            );
+            startActivity(intent);
+        
         });
 
         image.setImageResource(
