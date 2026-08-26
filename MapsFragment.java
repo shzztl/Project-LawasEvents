@@ -30,6 +30,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             @NonNull LayoutInflater inflater,
             @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
+        
         return inflater.inflate(R.layout.fragment_map, container, false);
     }
 
@@ -61,11 +62,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(@NonNull GoogleMap googleMap) {
 
         mMap = googleMap;
 
-        // Lawas, Sarawak
+        // Lawas default location
         LatLng lawas = new LatLng(4.861432, 115.406618);
 
         // Move camera to Lawas
