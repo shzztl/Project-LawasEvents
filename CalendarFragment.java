@@ -31,7 +31,6 @@ public class CalendarFragment extends Fragment {
     private GridLayout calendarGrid;
     private LinearLayout eventContainer;
     private Calendar currentMonth;
-
     private String calendarDate;
     private int selectedDay = -1;
 
@@ -71,7 +70,7 @@ public class CalendarFragment extends Fragment {
 
         ImageButton previousMonth = view.findViewById(R.id.btnPreviousMonth);
         ImageButton nextMonth = view.findViewById(R.id.btnNextMonth);
-        ImageButton backButton = view.findViewById(R.id.btnCalendarBack);
+        ImageButton btnBack = view.findViewById(R.id.btnBack);
 
         // INITIAL MONTH
         currentMonth = Calendar.getInstance();
@@ -79,27 +78,26 @@ public class CalendarFragment extends Fragment {
         if (getArguments() != null) {
             calendarDate = getArguments().getString("calendarDate");
         }
-        
+
         if (calendarDate != null && !calendarDate.isEmpty()) {
-        
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(
-                            "yyyy-MM-dd",
-                            Locale.ENGLISH
-                    );
-        
+                        "yyyy-MM-dd",
+                        Locale.ENGLISH
+                );
+
                 Calendar eventCalendar = Calendar.getInstance();
-        
+
                 eventCalendar.setTime(
                         dateFormat.parse(calendarDate)
                 );
-        
+
                 currentMonth.set(
                         eventCalendar.get(Calendar.YEAR),
                         eventCalendar.get(Calendar.MONTH),
                         1
                 );
-        
+
                 selectedDay = eventCalendar.get(
                         Calendar.DAY_OF_MONTH
                 );
@@ -143,29 +141,16 @@ public class CalendarFragment extends Fragment {
         });
 
         // BACK BUTTON
-        backButton.setOnClickListener(v -> {
-            requireActivity().onBackPressed();
+        btnBack.setOnClickListener(v -> {
+            requireActivity()
+                    .getSupportFragmentManager()
+                    .popBackStack();
         });
     }
 
     // LOAD EVENT INFORMATION
     private void loadEvents() {
         events.clear();
-
-        addEvent(
-                "2026-08-23",
-                new EventData(
-                        "LCDA 24th Anniversary",
-                        "23 August 2026",
-                        "6.45 am - 9.00 am",
-                        "Lawas Town Square, Lawas",
-                        "Festival",
-                        "Sempena sambutan ulangtahun "
-                                + "LCDA ke-24. The celebration "
-                                + "includes community aerobics "
-                                + "and Zumba activities."
-                )
-        );
 
         addEvent(
                 "2026-10-14",
@@ -232,21 +217,6 @@ public class CalendarFragment extends Fragment {
                         "Festival",
                         "Closing activities and community "
                                 + "celebration."
-                )
-        );
-
-        addEvent(
-                "2026-08-25",
-                new EventData(
-                        "Sambutan Maulidur Rasul 2026",
-                        "25 August 2026",
-                        "8.00 am - 12.00 pm",
-                        "Dataran Bandar Lawas",
-                        "Religious",
-                        "A community celebration featuring "
-                                + "a Maulidur Rasul procession, "
-                                + "religious activities and "
-                                + "community gathering."
                 )
         );
 
@@ -396,13 +366,12 @@ public class CalendarFragment extends Fragment {
 
         // AUTOMATICALLY SELECT EVENT DATE
         if (selectedDay != -1) {
-        
             String selectedKey = getDateKey(
                     currentMonth.get(Calendar.YEAR),
                     currentMonth.get(Calendar.MONTH),
                     selectedDay
             );
-        
+
             selectDate(
                     selectedKey,
                     selectedDay
