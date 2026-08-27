@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:id="@+id/main"
@@ -16,18 +15,146 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <!-- Custom Bottom Navigation -->
+    <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="50dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="45dp"
+        android:orientation="horizontal"
+        android:gravity="center"
         android:background="@drawable/bg_bottom_menu"
-        app:menu="@menu/bottom_menu"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
-        app:itemRippleColor="@android:color/transparent"
-        app:itemActiveIndicatorColor="#E6D7FF" />
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
 
+        <!-- HOME -->
+        <LinearLayout
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/iconHome"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_home"
+                android:contentDescription="Home"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/textHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textColor="@android:color/white"
+                android:textSize="11sp"
+                android:gravity="center"
+                android:fontFamily="sans" />
+
+        </LinearLayout>
+
+        <!-- CALENDAR -->
+        <LinearLayout
+            android:id="@+id/navCalendar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/iconCalendar"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_calendar"
+                android:contentDescription="Calendar"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/textCalendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calendar"
+                android:textColor="@android:color/white"
+                android:textSize="11sp"
+                android:gravity="center"
+                android:fontFamily="sans" />
+
+        </LinearLayout>
+
+        <!-- PAST EVENTS -->
+        <LinearLayout
+            android:id="@+id/navPast"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/iconPast"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_past_event"
+                android:contentDescription="Past Events"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/textPast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Past Events"
+                android:textColor="@android:color/white"
+                android:textSize="11sp"
+                android:gravity="center"
+                android:fontFamily="sans" />
+
+        </LinearLayout>
+
+        <!-- ABOUT -->
+        <LinearLayout
+            android:id="@+id/navAbout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/iconAbout"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_about"
+                android:contentDescription="About"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/textAbout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About"
+                android:textColor="@android:color/white"
+                android:textSize="11sp"
+                android:gravity="center"
+                android:fontFamily="sans" />
+
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
