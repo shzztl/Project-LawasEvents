@@ -1,63 +1,130 @@
 package com.example.lawaseventia;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import androidx.activity.EdgeToEdge;
 import androidx.fragment.app.Fragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+    // Navigation containers
+    LinearLayout navHome;
+    LinearLayout navCalendar;
+    LinearLayout navPast;
+    LinearLayout navAbout;
 
-    BottomNavigationView bottomNavigation;
+    // Navigation icons
+    ImageView iconHome;
+    ImageView iconCalendar;
+    ImageView iconPast;
+    ImageView iconAbout;
+
+    // Icon sizes
+    private static final int SELECTED_SIZE = 30;
+    private static final int UNSELECTED_SIZE = 22;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        bottomNavigation = findViewById(R.id.bottomNavigation);
+        // Find navigation views
+        navHome = findViewById(R.id.navHome);
+        navCalendar = findViewById(R.id.navCalendar);
+        navPast = findViewById(R.id.navPast);
+        navAbout = findViewById(R.id.navAbout);
+
+        // Find icons
+        iconHome = findViewById(R.id.iconHome);
+        iconCalendar = findViewById(R.id.iconCalendar);
+        iconPast = findViewById(R.id.iconPast);
+        iconAbout = findViewById(R.id.iconAbout);
 
         // Open Home by default
         if (savedInstanceState == null) {
+            showFragment(new HomeFragment());
 
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container, new HomeFragment())
-                    .commit();
+            setSelectedIcon(iconHome);
+            setUnselectedIcon(iconCalendar);
+            setUnselectedIcon(iconPast);
+            setUnselectedIcon(iconAbout);
         }
 
-        bottomNavigation.setOnItemSelectedListener(item -> {
+        // Home button
+        navHome.setOnClickListener(v -> {
+            showFragment(new HomeFragment());
 
-            Fragment selectedFragment = null;
-
-            int id = item.getItemId();
-
-            if (id == R.id.nav_home) {
-
-                selectedFragment = new HomeFragment();
-
-            } else if (id == R.id.nav_calendar) {
-
-                selectedFragment = new CalendarFragment();
-
-            } else if (id == R.id.nav_past) {
-
-                selectedFragment = new PastEventsFragment();
-
-            } else if (id == R.id.nav_about) {
-
-                selectedFragment = new AboutFragment();
-            }
-
-            if (selectedFragment != null) {
-
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.container, selectedFragment)
-                        .commit();
-            }
-
-            return true;
+            setSelectedIcon(iconHome);
+            setUnselectedIcon(iconCalendar);
+            setUnselectedIcon(iconPast);
+            setUnselectedIcon(iconAbout);
         });
+
+        // Calendar button
+        navCalendar.setOnClickListener(v -> {
+            showFragment(new CalendarFragment());
+
+            setSelectedIcon(iconCalendar);
+            setUnselectedIcon(iconHome);
+            setUnselectedIcon(iconPast);
+            setUnselectedIcon(iconAbout);
+        });
+
+        // Past Event button
+        navPast.setOnClickListener(v -> {
+            showFragment(new PastEventsFragment());
+
+            setSelectedIcon(iconPast);
+            setUnselectedIcon(iconHome);
+            setUnselectedIcon(iconCalendar);
+            setUnselectedIcon(iconAbout);
+        });
+
+        //About button
+        navAbout.setOnClickListener(v -> {
+            showFragment(new AboutFragment());
+
+            setSelectedIcon(iconAbout);
+            setUnselectedIcon(iconHome);
+            setUnselectedIcon(iconCalendar);
+            setUnselectedIcon(iconPast);
+        });
+    }
+
+    private void showFragment(Fragment fragment) {
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
+    }
+
+    //Bigger selected icon
+    private void setSelectedIcon(ImageView icon) {
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) icon.getLayoutParams();
+
+        params.width = dpToPx(SELECTED_SIZE);
+        params.height = dpToPx(SELECTED_SIZE);
+
+        icon.setLayoutParams(params);
+    }
+
+    //Smaller unselected icon
+    private void setUnselectedIcon(ImageView icon) {
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) icon.getLayoutParams();
+
+        params.width = dpToPx(UNSELECTED_SIZE);
+        params.height = dpToPx(UNSELECTED_SIZE);
+
+        icon.setLayoutParams(params);
+    }
+
+    private int dpToPx(int dp) {
+        float density = getResources().getDisplayMetrics().density;
+        return Math.round(dp * density);
     }
 }
