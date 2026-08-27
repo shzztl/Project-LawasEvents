@@ -26,6 +26,8 @@ public class HomeFragment extends Fragment {
     private LinearLayout eventIndicators;
     private ImageButton btnEventPrevious;
     private ImageButton btnEventNext;
+    private TextView txtHomeEventTitle;
+    private TextView txtHomeEventDate;
     private Handler sliderHandler;
     private Runnable sliderRunnable;
     private static final long SLIDE_DELAY = 3000;
@@ -69,6 +71,14 @@ public class HomeFragment extends Fragment {
         // Event next button
         btnEventNext = view.findViewById(
                 R.id.btnEventNext
+        );
+        //Event title
+        txtHomeEventTitle = view.findViewById(
+                R.id.txtHomeEventTitle
+        );
+        //Event date
+        txtHomeEventDate = view.findViewById(
+                R.id.txtHomeEventDate
         );
 
         // LOAD LAWAS IMAGES
@@ -133,6 +143,8 @@ public class HomeFragment extends Fragment {
                 eventAdapter
         );
 
+        updateHomeEventInfo(0);
+
         // CREATE EVENT INDICATORS
         setupEventIndicators();
 
@@ -142,6 +154,7 @@ public class HomeFragment extends Fragment {
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 updateEventIndicators(position);
+                updateHomeEventInfo(position);
             }
         });
 
@@ -261,7 +274,7 @@ public class HomeFragment extends Fragment {
     private void loadUpcomingEvents() {
         upcomingEvents = new ArrayList<>();
 
-        // EVENT 1
+        //EVENT 1
         upcomingEvents.add(
                 new Event(
                         "Pesta Orang Kampung",
@@ -272,8 +285,8 @@ public class HomeFragment extends Fragment {
                         "Lawas Stadium",
                         "Festival",
                         "Pesta Orang Kampung (POK) Lawas 2026 brings the community together for a vibrant celebration of local culture, traditions, food, and entertainment. Enjoy delicious local food, cultural performances, traditional activities, and exciting community competitions while experiencing the unique kampung spirit of Lawas.",
-                        "",
-                        "",
+                        " ● Food vendors\n ● Community competitions",
+                        " RS Food Sdn Bhd\n 012 - xxx xxxx",
                         "2026-09-02",
                         R.drawable.pesta_org_kpg
                 )
@@ -290,8 +303,8 @@ public class HomeFragment extends Fragment {
                         "Waterfront Lawas",
                         "Festival",
                         "Pesta Lawas 2026 celebrates the rich culture and community spirit of Lawas with a variety of activities, including a lively Floating Market featuring local food and products, as well as an exciting Regatta Boat competition showcasing the town's river heritage. Join us for a memorable celebration filled with culture, food, entertainment, and community activities.",
-                        "",
-                        "",
+                        " ● Floating market\n ● Regatta Boat competitions",
+                        " Lawas District Office\n 082 - 283 105",
                         "2026-10-14",
                         R.drawable.pesta_lawas
                 )
@@ -363,6 +376,27 @@ public class HomeFragment extends Fragment {
                 );
             }
         }
+    }
+
+    //UPDATE HOME EVENT INFO
+    private void updateHomeEventInfo(int position) {
+        if (upcomingEvents == null || upcomingEvents.isEmpty()) {
+            return;
+        }
+
+        if (position < 0 || position >= upcomingEvents.size()) {
+            return;
+        }
+
+        Event event = upcomingEvents.get(position);
+
+        txtHomeEventTitle.setText(
+                event.getTitle()
+        );
+
+        txtHomeEventDate.setText(
+                event.getDate()
+        );
     }
 
     // START AUTOMATIC LAWAS SLIDESHOW
