@@ -1,7 +1,7 @@
 package com.example.lawaseventia;
 
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -37,21 +37,21 @@ public class EventDetailsActivity extends AppCompatActivity {
         });
 
         btnMap.setOnClickListener(v -> {
-            Intent intent = new Intent(
-                    EventDetailsActivity.this,
-                    MapActivity.class
-            );
-            startActivity(intent);
+                    Intent intent = new Intent(
+                            EventDetailsActivity.this,
+                            MapsActivity.class
+                    );
+                    startActivity(intent);
         });
 
         btnViewCalendar.setOnClickListener(v -> {
             Intent intent = new Intent(
-                    EventDetailsActivity.this, 
-                    CalendarActivity.class);
-
+                    EventDetailsActivity.this,
+                    CalendarActivity.class
+            );
             String calendarDate = getIntent().getStringExtra("calendarDate");
             intent.putExtra("calendarDate", calendarDate);
-        
+            intent.putExtra("FROM_EVENT_DETAILS", true);
             startActivity(intent);
         });
 
