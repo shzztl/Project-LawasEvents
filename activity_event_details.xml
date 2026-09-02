@@ -51,10 +51,9 @@
                     android:id="@+id/imgEvent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
                     android:background="#000000"
-                    android:contentDescription="Event poster"
-                    android:scaleType="fitCenter" />
-
+                    android:contentDescription="Event poster" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -198,7 +197,7 @@
                     </LinearLayout>
 
                     <Button
-                        android:id="@+id/btnLocation"
+                        android:id="@+id/btnMap"
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
                         android:layout_gravity="center_horizontal"
