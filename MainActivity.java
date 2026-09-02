@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView iconAbout;
 
     // Icon sizes
-    private static final int SELECTED_SIZE = 30;
+    private static final int SELECTED_SIZE = 35;
     private static final int UNSELECTED_SIZE = 22;
 
     @Override
@@ -101,6 +101,15 @@ public class MainActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
+    }
+
+    public void showHome() {
+        showFragment(new HomeFragment());
+
+        setSelectedIcon(iconHome);
+        setUnselectedIcon(iconCalendar);
+        setUnselectedIcon(iconPast);
+        setUnselectedIcon(iconAbout);
     }
 
     //Bigger selected icon
