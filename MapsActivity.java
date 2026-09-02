@@ -22,7 +22,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
+        setContentView(R.layout.activity_maps);
 
         ImageButton btnBack = findViewById(R.id.btnBack);
 
@@ -39,60 +39,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
         }
-
-        // BOTTOM NAVIGATION
-        LinearLayout navHome = findViewById(R.id.navHome);
-        LinearLayout navCalendar = findViewById(R.id.navCalendar);
-        LinearLayout navPast = findViewById(R.id.navPast);
-        LinearLayout navAbout = findViewById(R.id.navAbout);
-
-        // HOME
-        navHome.setOnClickListener(v -> {
-            Intent intent = new Intent(
-                    MapActivity.this,
-                    MainActivity.class
-            );
-
-            intent.putExtra("openHome", true);
-            startActivity(intent);
-            finish();
-        });
-
-        // CALENDAR
-        navCalendar.setOnClickListener(v -> {
-            Intent intent = new Intent(
-                    MapActivity.this,
-                    MainActivity.class
-            );
-
-            intent.putExtra("openCalendar", true);
-            startActivity(intent);
-            finish();
-        });
-
-        // PAST
-        navPast.setOnClickListener(v -> {
-            Intent intent = new Intent(
-                    MapActivity.this,
-                    MainActivity.class
-            );
-
-            intent.putExtra("openPast", true);
-            startActivity(intent);
-            finish();
-        });
-
-        // ABOUT
-        navAbout.setOnClickListener(v -> {
-            Intent intent = new Intent(
-                    MapActivity.this,
-                    MainActivity.class
-            );
-
-            intent.putExtra("openAbout", true);
-            startActivity(intent);
-            finish();
-        });
     }
 
     @Override
@@ -104,19 +50,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         LatLng lawas = new LatLng(4.861432, 115.406618);
 
         // Move camera to Lawas
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lawas, 13));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lawas, 15));
 
-      
-        LatLng event1 = new LatLng(4.8560, 115.4070);
 
+        LatLng event1 = new LatLng(4.8722, 115.4066);
         mMap.addMarker(new MarkerOptions()
                 .position(event1)
                 .title("Lawas Stadium Parking")
-                .snippet("Pesta Orang Kampung 22.0""));
+                .snippet("Pesta Orang Kampung 22.0"));
 
-       
-        LatLng event2 = new LatLng(4.8525, 115.4085);
 
+        LatLng event2 = new LatLng(4.856970, 115.407795);
         mMap.addMarker(new MarkerOptions()
                 .position(event2)
                 .title("Lawas Waterfront")
