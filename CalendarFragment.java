@@ -32,6 +32,7 @@ public class CalendarFragment extends Fragment {
     private LinearLayout eventContainer;
     private Calendar currentMonth;
     private String calendarDate;
+    private boolean fromEventDetails = false;
     private int selectedDay = -1;
 
     // Stores all event information
@@ -77,6 +78,7 @@ public class CalendarFragment extends Fragment {
 
         if (getArguments() != null) {
             calendarDate = getArguments().getString("calendarDate");
+            fromEventDetails = getArguments().getBoolean("FROM_EVENT_DETAILS", false);
         }
 
         if (calendarDate != null && !calendarDate.isEmpty()) {
@@ -104,14 +106,14 @@ public class CalendarFragment extends Fragment {
             } catch (Exception e) {
                 currentMonth.set(
                         2026,
-                        Calendar.AUGUST,
+                        Calendar.SEPTEMBER,
                         1
                 );
             }
         } else {
             currentMonth.set(
                     2026,
-                    Calendar.AUGUST,
+                    Calendar.SEPTEMBER,
                     1
             );
         }
@@ -142,9 +144,12 @@ public class CalendarFragment extends Fragment {
 
         // BACK BUTTON
         btnBack.setOnClickListener(v -> {
-            requireActivity()
-                    .getSupportFragmentManager()
-                    .popBackStack();
+            if (fromEventDetails) {
+                requireActivity().finish();
+            } else {
+                MainActivity mainActivity = (MainActivity) requireActivity();
+                mainActivity.showHome();
+            }
         });
     }
 
@@ -339,9 +344,7 @@ public class CalendarFragment extends Fragment {
 
         int firstDayOfWeek = firstDay.get(Calendar.DAY_OF_WEEK);
 
-        /*
-         * Because Android Calendar starts on Sunday
-         */
+        /* Because Android Calendar starts on Sunday */
 
         int offset;
 
