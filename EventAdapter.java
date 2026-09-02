@@ -16,10 +16,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     Context context;
     ArrayList<Event> events;
 
-    public EventAdapter(
-            Context context,
-            ArrayList<Event> events) {
-
+    public EventAdapter(Context context, ArrayList<Event> events) {
         this.context = context;
         this.events = events;
     }
@@ -45,6 +42,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                 event.getImageResource()
         );
 
+        //OPEN EVENT DETAILS
         holder.imgEvent.setOnClickListener(v -> {
             Intent intent = new Intent(
                     context,
