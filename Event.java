@@ -26,7 +26,7 @@ public class Event {
             String attractions,
             String organizer,
             String calendarDate,
-            int imageResource ){
+            int imageResource){
 
         this.title = title;
         this.date = date;
@@ -81,7 +81,6 @@ public class Event {
     public String getOrganizer() {
         return organizer;
     }
-
     public String getCalendarDate() {
         return calendarDate;
     }
