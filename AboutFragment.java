@@ -8,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.content.Intent;
+import android.net.Uri;
+import android.widget.ImageButton;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,6 +54,16 @@ public class AboutFragment extends Fragment {
         viewPagerAttractions = view.findViewById(R.id.viewPagerAttractions);
         attractionIndicators = view.findViewById(R.id.attractionIndicators);
 
+        ImageButton btnContact = view.findViewById(R.id.btnContact);
+
+        btnContact.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://talikhidmat.sarawak.gov.my/talikhidmat/web/home/agency_view/393")
+            );
+            startActivity(intent);
+        });
+        
         //ATTRACTION IMAGES
         attractionImages = new ArrayList<>();
 
