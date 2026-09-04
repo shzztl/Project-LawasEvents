@@ -63,7 +63,7 @@ public class AboutFragment extends Fragment {
             );
             startActivity(intent);
         });
-        
+
         //ATTRACTION IMAGES
         attractionImages = new ArrayList<>();
 
