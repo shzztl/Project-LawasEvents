@@ -295,7 +295,11 @@ public class HomeFragment extends Fragment {
                         "Interested vendors or those looking for available booth spaces can contact \n019-530 1248 directly.",
                         "https://www.facebook.com/p/Pesta-Orang-Kampung-100093304011179/",
                         "2026-09-02",
-                        R.drawable.pesta_org_kpg
+                        R.drawable.pesta_org_kpg,
+
+                        //LOCATION
+                        4.8722,
+                        115.4066
                 )
         );
 
@@ -321,7 +325,11 @@ public class HomeFragment extends Fragment {
                         "Interested vendors or those looking for available booth spaces can contact \n082 - 283 105 directly.",
                         "https://talikhidmat.sarawak.gov.my/talikhidmat/web/home/agency_view/393",
                         "2026-10-14",
-                        R.drawable.pesta_lawas
+                        R.drawable.pesta_lawas,
+
+                        //LOCATION
+                        4.856970,
+                        115.407795
                 )
         );
     }
