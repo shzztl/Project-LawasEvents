@@ -119,6 +119,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                     event.getImageResource()
             );
 
+            intent.putExtra(
+                    "latitude",
+                    event.getLatitude()
+            );
+
+            intent.putExtra(
+                    "longitude",
+                    event.getLongitude()
+            );
+
             context.startActivity(intent);
         });
     }
