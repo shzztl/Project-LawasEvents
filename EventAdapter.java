@@ -100,6 +100,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             );
 
             intent.putExtra(
+                    "organizerInfo",
+                    event.getOrganizerInfo()
+            );
+
+            intent.putExtra(
+                    "clicklink",
+                    event.getClicklink()
+            );
+
+            intent.putExtra(
                     "calendarDate",
                     event.getCalendarDate()
             );
