@@ -38,6 +38,37 @@
             android:layout_height="match_parent" />
     </LinearLayout>
 
+    <!-- EVENT INFORMATION -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="@drawable/bg_map_event">
+
+        <TextView
+            android:id="@+id/txtMapEventName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/txtMapEventDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/white"
+            android:textSize="13sp" />
+    </LinearLayout>
+
     <!-- MAP AREA -->
     <FrameLayout
         android:layout_width="match_parent"
