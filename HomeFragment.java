@@ -291,7 +291,9 @@ public class HomeFragment extends Fragment {
                                 " ● Handicraft and local product showcases\n" +
                                 " ● Community activities\n" +
                                 " ● Family-friendly entertainment",
-                        "RS Food Sdn Bhd \n\nInterested vendors or those looking for available booth spaces can contact 019-530 1248 directly.",
+                        "RS Food Sdn Bhd",
+                        "Interested vendors or those looking for available booth spaces can contact \n019-530 1248 directly.",
+                        "https://www.facebook.com/p/Pesta-Orang-Kampung-100093304011179/",
                         "2026-09-02",
                         R.drawable.pesta_org_kpg
                 )
@@ -315,7 +317,9 @@ public class HomeFragment extends Fragment {
                                 " ● Local handicrafts and SME products\n" +
                                 " ● Waterfront entertainment\n" +
                                 " ● Community and family activities",
-                        "Lawas District Office \n\nInterested vendors or those looking for available booth spaces can contact 082 - 283 105 directly.",
+                        "Lawas District Office",
+                        "Interested vendors or those looking for available booth spaces can contact \n082 - 283 105 directly.",
+                        "https://talikhidmat.sarawak.gov.my/talikhidmat/web/home/agency_view/393",
                         "2026-10-14",
                         R.drawable.pesta_lawas
                 )
