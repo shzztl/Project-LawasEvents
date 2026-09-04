@@ -11,6 +11,8 @@ public class Event {
     private String description;
     private String attractions;
     private String organizer;
+    private String organizerInfo;
+    private String clicklink;
     private String calendarDate;
     private int imageResource;
 
@@ -25,6 +27,8 @@ public class Event {
             String description,
             String attractions,
             String organizer,
+            String organizerInfo,
+            String clicklink,
             String calendarDate,
             int imageResource){
 
@@ -38,6 +42,8 @@ public class Event {
         this.description = description;
         this.attractions = attractions;
         this.organizer = organizer;
+        this.organizerInfo = organizerInfo;
+        this.clicklink = clicklink;
         this.calendarDate = calendarDate;
         this.imageResource = imageResource;
     }
@@ -81,6 +87,15 @@ public class Event {
     public String getOrganizer() {
         return organizer;
     }
+
+    public String getOrganizerInfo() {
+        return organizerInfo;
+    }
+
+    public String getClicklink(){
+        return clicklink;
+    }
+
     public String getCalendarDate() {
         return calendarDate;
     }
