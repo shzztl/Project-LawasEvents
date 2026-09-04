@@ -15,6 +15,8 @@ public class Event {
     private String clicklink;
     private String calendarDate;
     private int imageResource;
+    private double latitude;
+    private double longitude;
 
     public Event(
             String title,
@@ -30,7 +32,9 @@ public class Event {
             String organizerInfo,
             String clicklink,
             String calendarDate,
-            int imageResource){
+            int imageResource,
+            double latitude,
+            double longitude){
 
         this.title = title;
         this.date = date;
@@ -46,6 +50,8 @@ public class Event {
         this.clicklink = clicklink;
         this.calendarDate = calendarDate;
         this.imageResource = imageResource;
+        this.latitude = latitude;
+        this.latitude = latitude;
     }
 
     public String getTitle() {
@@ -102,5 +108,13 @@ public class Event {
 
     public int getImageResource() {
         return imageResource;
+    }
+
+    public double getLatitude(){
+        return latitude;
+    }
+
+    public double getLongitude(){
+        return longitude;
     }
 }
