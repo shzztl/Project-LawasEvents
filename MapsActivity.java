@@ -78,6 +78,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mMap.addMarker(new MarkerOptions()
                 .position(eventLocation)
-                .title("eventName"));
+                .title(title));
     }
 }
