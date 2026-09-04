@@ -1,6 +1,7 @@
 package com.example.lawaseventia;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -27,6 +28,8 @@ public class EventDetailsActivity extends AppCompatActivity {
         TextView description = findViewById(R.id.txtDescription);
         TextView attractions = findViewById(R.id.txtAttractions);
         TextView organizer = findViewById(R.id.txtOrganizer);
+        TextView organizerInfo = findViewById(R.id.txtOrganizerInfo);
+        Button btnOrganizerLink = findViewById(R.id.btnOrganizerLink);
 
         ImageButton btnBack = findViewById(R.id.btnBack);
         Button btnMap = findViewById(R.id.btnMap);
@@ -37,11 +40,20 @@ public class EventDetailsActivity extends AppCompatActivity {
         });
 
         btnMap.setOnClickListener(v -> {
-                    Intent intent = new Intent(
-                            EventDetailsActivity.this,
-                            MapsActivity.class
-                    );
-                    startActivity(intent);
+            double latitude = getIntent().getDoubleExtra("latitude", 4.8500);
+            double longitude = getIntent().getDoubleExtra("longitude", 115.4000);
+            String eventTitle = getIntent().getStringExtra("title");
+            String eventDate = getIntent().getStringExtra("date");
+
+            Intent intent = new Intent(
+                    EventDetailsActivity.this,
+                    MapsActivity.class
+            );
+            intent.putExtra("latitude", latitude);
+            intent.putExtra("longitude", longitude);
+            intent.putExtra("title", eventTitle);
+            intent.putExtra("date", eventDate);
+            startActivity(intent);
         });
 
         btnViewCalendar.setOnClickListener(v -> {
@@ -101,5 +113,20 @@ public class EventDetailsActivity extends AppCompatActivity {
         organizer.setText(
                 getIntent().getStringExtra("organizer")
         );
+
+        organizerInfo.setText(
+                getIntent().getStringExtra("organizerInfo")
+        );
+
+        String clicklink = getIntent().getStringExtra("clicklink");
+        btnOrganizerLink.setOnClickListener(v -> {
+            if (clicklink != null && !clicklink.isEmpty()) {
+                Intent intent = new Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(clicklink)
+                );
+                startActivity(intent);
+            }
+        });
     }
 }
