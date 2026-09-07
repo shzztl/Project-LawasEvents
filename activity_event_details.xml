@@ -151,7 +151,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="4dp"
                         android:backgroundTint="#7B2DFF"
-                        android:text="View on Calendar"
+                        android:text="Lihat di Kalendar"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="12sp" />
@@ -203,7 +203,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="4dp"
                         android:backgroundTint="#7B2DFF"
-                        android:text="See Location on Maps"
+                        android:text="Lihat Lokasi di Peta"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="12sp" />
@@ -259,7 +259,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="About Event"
+                        android:text="Tentang Acara"
                         android:textColor="@android:color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -278,7 +278,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
-                        android:text="Main Attractions &amp; Activities:"
+                        android:text="Tarikan &amp; Aktiviti Utama:"
                         android:textColor="@android:color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -305,7 +305,7 @@
                             android:id="@+id/tvOrganizerTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Event Organizer:"
+                            android:text="Penganjur Acara:"
                             android:textColor="@android:color/white"
                             android:textSize="16sp"
                             android:textStyle="bold"
@@ -351,7 +351,7 @@
                                         android:layout_marginStart="15dp"
                                         android:layout_marginEnd="15dp"
                                         android:background="@drawable/bg_click_here"
-                                        android:text="CLICK HERE"
+                                        android:text="KLIK DI SINI"
                                         android:textColor="@android:color/white"
                                         android:textSize="10sp"
                                         android:textStyle="bold"
