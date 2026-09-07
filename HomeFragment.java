@@ -278,28 +278,28 @@ public class HomeFragment extends Fragment {
         upcomingEvents.add(
                 new Event(
                         "Pesta Orang Kampung",
-                        "2 - 6 September 2026, Wednesday - Sunday",
-                        "3.00 pm - 11.00 pm",
-                        "FREE ENTRY",
-                        "Open to public",
-                        "Lawas Stadium",
-                        "Festival",
-                        "Pesta Orang Kampung (POK) Lawas 2026 brings the community together for a vibrant celebration of local culture, traditions, food, and entertainment. Enjoy delicious local food, cultural performances, traditional activities, and exciting community competitions while experiencing the unique kampung spirit of Lawas.",
-                        " ● Traditional games and competitions\n" +
-                                " ● Cultural performances\n" +
-                                " ● Local food and traditional cuisine\n" +
-                                " ● Handicraft and local product showcases\n" +
-                                " ● Community activities\n" +
-                                " ● Family-friendly entertainment",
+                        "2 - 6 September 2026, Rabu - Ahad",
+                        "3.00 petang - 11.00 malam",
+                        "PERCUMA",
+                        "Terbuka kepada orang awam",
+                        "Stadium Lawas",
+                        "Pesta",
+                        "Pesta Orang Kampung (POK) Lawas 2026 menghimpunkan masyarakat dalam sebuah sambutan meriah yang mengetengahkan budaya, tradisi, makanan dan hiburan tempatan. Nikmati pelbagai makanan tempatan, persembahan kebudayaan, aktiviti tradisional dan pertandingan komuniti yang menarik sambil merasai keunikan semangat kampung di Lawas.",
+                        " ● Permainan dan pertandingan tradisional\n" +
+                                " ● Persembahan kebudayaan\n" +
+                                " ● Makanan tempatan dan hidangan tradisional\n" +
+                                " ● Pameran kraftangan dan produk tempatan\n" +
+                                " ● Aktiviti kemasyarakatan\n" +
+                                " ● Hiburan mesra keluarga",
                         "RS Food Sdn Bhd",
-                        "Interested vendors or those looking for available booth spaces can contact \n019-530 1248 directly.",
+                        "Peniaga yang berminat atau mereka yang ingin mendapatkan ruang gerai boleh menghubungi 019-530 1248 secara terus.",
                         "https://www.facebook.com/p/Pesta-Orang-Kampung-100093304011179/",
                         "2026-09-02",
                         R.drawable.pesta_org_kpg,
 
                         //LOCATION
-                        4.8722,
-                        115.4066
+                        4.873043723482146,
+                        115.40664788164086
                 )
         );
 
@@ -307,29 +307,29 @@ public class HomeFragment extends Fragment {
         upcomingEvents.add(
                 new Event(
                         "Pesta Lawas 2026",
-                        "14 - 18 October 2026, Wednesday - Sunday",
-                        "10.00 am - 11.00 pm",
-                        "FREE ENTRY",
-                        "Open to public",
+                        "14 - 18 Oktober 2026, Rabu - Ahad",
+                        "9.00 pagi - 11.00 malam",
+                        "PERCUMA",
+                        "Terbuka kepada orang awam",
                         "Waterfront Lawas",
-                        "Festival",
-                        "Pesta Lawas 2026 celebrates the rich culture and community spirit of Lawas with a variety of activities, including a lively Floating Market featuring local food and products, as well as an exciting Regatta Boat competition showcasing the town's river heritage. Join us for a memorable celebration filled with culture, food, entertainment, and community activities.",
-                        " ● Regatta boat races\n" +
-                                " ● Floating market\n" +
-                                " ● Local food and traditional delicacies\n" +
-                                " ● Cultural performances\n" +
-                                " ● Local handicrafts and SME products\n" +
-                                " ● Waterfront entertainment\n" +
-                                " ● Community and family activities",
-                        "Lawas District Office",
-                        "Interested vendors or those looking for available booth spaces can contact \n082 - 283 105 directly.",
+                        "Pesta",
+                        "Pesta Lawas 2026 meraikan kekayaan budaya dan semangat kemasyarakatan Lawas dengan pelbagai aktiviti, termasuk Pasar Terapung yang meriah dengan makanan dan produk tempatan, serta pertandingan Perahu Regata yang menarik bagi mengetengahkan warisan sungai di bandar ini. Sertai kami untuk menikmati sambutan yang penuh dengan budaya, makanan, hiburan dan aktiviti kemasyarakatan.",
+                        " ● Perlumbaan perahu regata\n" +
+                                " ● Pasar terapung\n" +
+                                " ● Makanan tempatan dan juadah tradisional\n" +
+                                " ● Persembahan kebudayaan\n" +
+                                " ● Kraftangan tempatan dan produk PKS\n" +
+                                " ● Hiburan di tebingan\n" +
+                                " ● Aktiviti komuniti dan keluarga",
+                        "Pejabat Daerah Lawas",
+                        "Peniaga yang berminat atau mereka yang ingin mendapatkan ruang gerai boleh menghubungi 082 - 283 105 secara terus.",
                         "https://talikhidmat.sarawak.gov.my/talikhidmat/web/home/agency_view/393",
                         "2026-10-14",
                         R.drawable.pesta_lawas,
 
                         //LOCATION
-                        4.856970,
-                        115.407795
+                        4.85685785797304,
+                        115.40784333558247
                 )
         );
     }
