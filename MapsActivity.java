@@ -21,6 +21,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private double longitude;
     private String title;
     private String date;
+    private String location;
 
 
     @Override
@@ -40,6 +41,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         title = getIntent().getStringExtra("title");
         date = getIntent().getStringExtra("date");
+        location = getIntent().getStringExtra( "location");
 
         // DISPLAY EVENT NAME
         TextView txtMapEventName = findViewById(R.id.txtMapEventName);
@@ -74,10 +76,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         LatLng eventLocation = new LatLng(latitude, longitude);
 
         // Move camera to Lawas
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLocation, 15));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLocation, 15f));
 
         mMap.addMarker(new MarkerOptions()
                 .position(eventLocation)
-                .title(title));
+                .title(location)
+                .snippet(title));
     }
 }
