@@ -17,18 +17,21 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+
+    // Event data
     private double latitude;
     private double longitude;
-    private String title;
-    private String date;
-    private String location;
 
+    private String title;
+    private String location;
+    private String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+        // BACK BUTTON
         ImageButton btnBack = findViewById(R.id.btnBack);
 
         btnBack.setOnClickListener(v -> {
@@ -36,16 +39,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
         // GET EVENT DATA
-        latitude = getIntent().getDoubleExtra("latitude", 4.8500);
-        longitude = getIntent().getDoubleExtra("longitude", 115.4000);
+        latitude = getIntent().getDoubleExtra("latitude", 0.0);
+        longitude = getIntent().getDoubleExtra("longitude", 0.0);
 
         title = getIntent().getStringExtra("title");
+        location = getIntent().getStringExtra("location");
         date = getIntent().getStringExtra("date");
-        location = getIntent().getStringExtra( "location");
 
-        // DISPLAY EVENT NAME
+        // DISPLAY EVENT NAME AND DATE
         TextView txtMapEventName = findViewById(R.id.txtMapEventName);
-
         TextView txtMapEventDate = findViewById(R.id.txtMapEventDate);
 
         if (title != null && !title.isEmpty()) {
@@ -72,15 +74,23 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mMap = googleMap;
 
-        // Lawas default location
+        // EVENT LOCATION FROM HOME FRAGMENT
         LatLng eventLocation = new LatLng(latitude, longitude);
 
-        // Move camera to Lawas
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLocation, 15f));
+        // MOVE CAMERA TO EVENT LOCATION
+        mMap.moveCamera(
+                CameraUpdateFactory.newLatLngZoom(
+                        eventLocation,
+                        15f
+                )
+        );
 
-        mMap.addMarker(new MarkerOptions()
-                .position(eventLocation)
-                .title(location)
-                .snippet(title));
+        // ADD EVENT MARKER
+        mMap.addMarker(
+                new MarkerOptions()
+                        .position(eventLocation)
+                        .title(location)
+                        .snippet(title)
+        );
     }
 }
