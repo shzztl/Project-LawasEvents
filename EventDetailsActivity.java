@@ -40,21 +40,27 @@ public class EventDetailsActivity extends AppCompatActivity {
         });
 
         btnMap.setOnClickListener(v -> {
-            double latitude = getIntent().getDoubleExtra("latitude", 4.8500);
-            double longitude = getIntent().getDoubleExtra("longitude", 115.4000);
-            String eventTitle = getIntent().getStringExtra("title");
-            String eventDate = getIntent().getStringExtra("date");
 
-            Intent intent = new Intent(
-                    EventDetailsActivity.this,
-                    MapsActivity.class
-            );
-            intent.putExtra("latitude", latitude);
-            intent.putExtra("longitude", longitude);
-            intent.putExtra("title", eventTitle);
-            intent.putExtra("date", eventDate);
-            startActivity(intent);
-        });
+    double latitude = getIntent().getDoubleExtra("latitude", 0.0);
+    double longitude = getIntent().getDoubleExtra("longitude", 0.0);
+
+    String eventTitle = getIntent().getStringExtra("title");
+    String eventLocation = getIntent().getStringExtra("location");
+    String eventDate = getIntent().getStringExtra("date");
+
+    Intent intent = new Intent(
+            EventDetailsActivity.this,
+            MapsActivity.class
+    );
+
+    intent.putExtra("latitude", latitude);
+    intent.putExtra("longitude", longitude);
+    intent.putExtra("title", eventTitle);
+    intent.putExtra("location", eventLocation);
+    intent.putExtra("date", eventDate);
+
+    startActivity(intent);
+});
 
         btnViewCalendar.setOnClickListener(v -> {
             Intent intent = new Intent(
