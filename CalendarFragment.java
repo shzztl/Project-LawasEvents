@@ -1,4 +1,5 @@
 package com.example.lawaseventia;
+
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -25,15 +26,20 @@ import java.util.Locale;
 import java.util.Map;
 
 public class CalendarFragment extends Fragment {
+
     private TextView txtMonthYear;
     private TextView txtEventCount;
     private TextView txtSelectedDate;
     private GridLayout calendarGrid;
     private LinearLayout eventContainer;
+
     private Calendar currentMonth;
     private String calendarDate;
     private boolean fromEventDetails = false;
     private int selectedDay = -1;
+
+    // Malay locale
+    private final Locale MALAY_LOCALE = new Locale("ms", "MY");
 
     // Stores all event information
     private final Map<String, List<EventData>> events = new HashMap<>();
@@ -62,33 +68,55 @@ public class CalendarFragment extends Fragment {
                 savedInstanceState
         );
 
+        // ==========================================
         // CONNECT TO XML
+        // ==========================================
+
         txtMonthYear = view.findViewById(R.id.txtMonthYear);
         txtEventCount = view.findViewById(R.id.txtEventCount);
         txtSelectedDate = view.findViewById(R.id.txtSelectedDate);
         calendarGrid = view.findViewById(R.id.calendarGrid);
         eventContainer = view.findViewById(R.id.eventContainer);
 
-        ImageButton previousMonth = view.findViewById(R.id.btnPreviousMonth);
-        ImageButton nextMonth = view.findViewById(R.id.btnNextMonth);
-        ImageButton btnBack = view.findViewById(R.id.btnBack);
+        ImageButton previousMonth =
+                view.findViewById(R.id.btnPreviousMonth);
 
+        ImageButton nextMonth =
+                view.findViewById(R.id.btnNextMonth);
+
+        ImageButton btnBack =
+                view.findViewById(R.id.btnBack);
+
+        // ==========================================
         // INITIAL MONTH
+        // ==========================================
+
         currentMonth = Calendar.getInstance();
 
         if (getArguments() != null) {
-            calendarDate = getArguments().getString("calendarDate");
-            fromEventDetails = getArguments().getBoolean("FROM_EVENT_DETAILS", false);
+
+            calendarDate =
+                    getArguments().getString("calendarDate");
+
+            fromEventDetails =
+                    getArguments().getBoolean(
+                            "FROM_EVENT_DETAILS",
+                            false
+                    );
         }
 
         if (calendarDate != null && !calendarDate.isEmpty()) {
-            try {
-                SimpleDateFormat dateFormat = new SimpleDateFormat(
-                        "yyyy-MM-dd",
-                        Locale.ENGLISH
-                );
 
-                Calendar eventCalendar = Calendar.getInstance();
+            try {
+
+                SimpleDateFormat dateFormat =
+                        new SimpleDateFormat(
+                                "yyyy-MM-dd",
+                                Locale.ENGLISH
+                        );
+
+                Calendar eventCalendar =
+                        Calendar.getInstance();
 
                 eventCalendar.setTime(
                         dateFormat.parse(calendarDate)
@@ -100,17 +128,22 @@ public class CalendarFragment extends Fragment {
                         1
                 );
 
-                selectedDay = eventCalendar.get(
-                        Calendar.DAY_OF_MONTH
-                );
+                selectedDay =
+                        eventCalendar.get(
+                                Calendar.DAY_OF_MONTH
+                        );
+
             } catch (Exception e) {
+
                 currentMonth.set(
                         2026,
                         Calendar.SEPTEMBER,
                         1
                 );
             }
+
         } else {
+
             currentMonth.set(
                     2026,
                     Calendar.SEPTEMBER,
@@ -118,55 +151,94 @@ public class CalendarFragment extends Fragment {
             );
         }
 
+        // ==========================================
         // LOAD EVENTS
+        // ==========================================
+
         loadEvents();
 
+        // ==========================================
         // DISPLAY CALENDAR
+        // ==========================================
+
         displayCalendar();
 
+        // ==========================================
         // PREVIOUS MONTH
+        // ==========================================
+
         previousMonth.setOnClickListener(v -> {
+
             currentMonth.add(
                     Calendar.MONTH,
                     -1
             );
+
+            // Remove automatic selected day when changing month
+            selectedDay = -1;
+
             displayCalendar();
         });
 
+        // ==========================================
         // NEXT MONTH
+        // ==========================================
+
         nextMonth.setOnClickListener(v -> {
+
             currentMonth.add(
                     Calendar.MONTH,
                     1
             );
+
+            // Remove automatic selected day when changing month
+            selectedDay = -1;
+
             displayCalendar();
         });
 
+        // ==========================================
         // BACK BUTTON
+        // ==========================================
+
         btnBack.setOnClickListener(v -> {
+
             if (fromEventDetails) {
+
                 requireActivity().finish();
+
             } else {
-                MainActivity mainActivity = (MainActivity) requireActivity();
+
+                MainActivity mainActivity =
+                        (MainActivity) requireActivity();
+
                 mainActivity.showHome();
             }
         });
     }
 
+    // =========================================================
     // LOAD EVENT INFORMATION
+    // =========================================================
+
     private void loadEvents() {
+
         events.clear();
+
+        // -----------------------------------------------------
+        // PESTA LAWAS 2026
+        // -----------------------------------------------------
 
         addEvent(
                 "2026-10-14",
                 new EventData(
                         "Pesta Lawas 2026",
-                        "14 October 2026",
-                        "10.00 am - 10.00 pm",
-                        "Lawas Waterfront",
+                        "14 Oktober 2026",
+                        "10.00 pagi - 10.00 malam",
+                        "Waterfront Lawas",
                         "Festival",
-                        "Enjoy cultural activities, local food, "
-                                + "entertainment and the Floating Market."
+                        "Nikmati aktiviti kebudayaan, makanan tempatan, "
+                                + "hiburan dan Pasar Terapung."
                 )
         );
 
@@ -174,14 +246,13 @@ public class CalendarFragment extends Fragment {
                 "2026-10-15",
                 new EventData(
                         "Pesta Lawas 2026",
-                        "15 October 2026",
-                        "10.00 am - 10.00 pm",
-                        "Lawas Waterfront",
+                        "15 Oktober 2026",
+                        "10.00 pagi - 10.00 malam",
+                        "Waterfront Lawas",
                         "Festival",
-                        "Pesta Lawas 2026 features the "
-                                + "Floating Market, Regatta boat "
-                                + "activities, cultural performances "
-                                + "and local food."
+                        "Pesta Lawas 2026 menampilkan Pasar Terapung, "
+                                + "aktiviti bot Regata, persembahan kebudayaan "
+                                + "dan makanan tempatan."
                 )
         );
 
@@ -189,12 +260,12 @@ public class CalendarFragment extends Fragment {
                 "2026-10-16",
                 new EventData(
                         "Pesta Lawas 2026",
-                        "16 October 2026",
-                        "10.00 am - 10.00 pm",
-                        "Lawas Waterfront",
+                        "16 Oktober 2026",
+                        "10.00 pagi - 10.00 malam",
+                        "Waterfront Lawas",
                         "Festival",
-                        "Enjoy cultural activities, local food, "
-                                + "entertainment and the Floating Market."
+                        "Nikmati aktiviti kebudayaan, makanan tempatan, "
+                                + "hiburan dan Pasar Terapung."
                 )
         );
 
@@ -202,13 +273,12 @@ public class CalendarFragment extends Fragment {
                 "2026-10-17",
                 new EventData(
                         "Pesta Lawas 2026",
-                        "17 October 2026",
-                        "10.00 am - 10.00 pm",
-                        "Lawas Waterfront",
+                        "17 Oktober 2026",
+                        "10.00 pagi - 10.00 malam",
+                        "Waterfront Lawas",
                         "Festival",
-                        "Community activities, cultural "
-                                + "performances and Regatta boat "
-                                + "activities."
+                        "Aktiviti komuniti, persembahan kebudayaan "
+                                + "dan aktiviti bot Regata."
                 )
         );
 
@@ -216,26 +286,28 @@ public class CalendarFragment extends Fragment {
                 "2026-10-18",
                 new EventData(
                         "Pesta Lawas 2026",
-                        "18 October 2026",
-                        "10.00 am - 10.00 pm",
-                        "Lawas Waterfront",
+                        "18 Oktober 2026",
+                        "10.00 pagi - 10.00 malam",
+                        "Waterfront Lawas",
                         "Festival",
-                        "Closing activities and community "
-                                + "celebration."
+                        "Aktiviti penutup dan sambutan komuniti."
                 )
         );
+
+        // -----------------------------------------------------
+        // PESTA ORANG KAMPUNG LAWAS 2026
+        // -----------------------------------------------------
 
         addEvent(
                 "2026-09-02",
                 new EventData(
                         "Pesta Orang Kampung Lawas 2026",
                         "2 September 2026",
-                        "3.00 pm - 11.00 pm",
-                        "Lawas Stadium Parking Area",
+                        "3.00 petang - 11.00 malam",
+                        "Kawasan Parkir Stadium Lawas",
                         "Festival",
-                        "A community celebration showcasing "
-                                + "local food, culture, traditions "
-                                + "and entertainment."
+                        "Sambutan komuniti yang menampilkan makanan "
+                                + "tempatan, budaya, tradisi dan hiburan."
                 )
         );
 
@@ -244,12 +316,11 @@ public class CalendarFragment extends Fragment {
                 new EventData(
                         "Pesta Orang Kampung Lawas 2026",
                         "3 September 2026",
-                        "3.00 pm - 11.00 pm",
-                        "Lawas Stadium Parking Area",
+                        "3.00 petang - 11.00 malam",
+                        "Kawasan Parkir Stadium Lawas",
                         "Festival",
-                        "A community celebration showcasing "
-                                + "local food, culture, traditions "
-                                + "and entertainment."
+                        "Sambutan komuniti yang menampilkan makanan "
+                                + "tempatan, budaya, tradisi dan hiburan."
                 )
         );
 
@@ -258,12 +329,11 @@ public class CalendarFragment extends Fragment {
                 new EventData(
                         "Pesta Orang Kampung Lawas 2026",
                         "4 September 2026",
-                        "3.00 pm - 11.00 pm",
-                        "Lawas Stadium Parking Area",
+                        "3.00 petang - 11.00 malam",
+                        "Kawasan Parkir Stadium Lawas",
                         "Festival",
-                        "A community celebration showcasing "
-                                + "local food, culture, traditions "
-                                + "and entertainment."
+                        "Sambutan komuniti yang menampilkan makanan "
+                                + "tempatan, budaya, tradisi dan hiburan."
                 )
         );
 
@@ -272,12 +342,11 @@ public class CalendarFragment extends Fragment {
                 new EventData(
                         "Pesta Orang Kampung Lawas 2026",
                         "5 September 2026",
-                        "3.00 pm - 11.00 pm",
-                        "Lawas Stadium Parking Area",
+                        "3.00 petang - 11.00 malam",
+                        "Kawasan Parkir Stadium Lawas",
                         "Festival",
-                        "A community celebration showcasing "
-                                + "local food, culture, traditions "
-                                + "and entertainment."
+                        "Sambutan komuniti yang menampilkan makanan "
+                                + "tempatan, budaya, tradisi dan hiburan."
                 )
         );
 
@@ -286,38 +355,48 @@ public class CalendarFragment extends Fragment {
                 new EventData(
                         "Pesta Orang Kampung Lawas 2026",
                         "6 September 2026",
-                        "3.00 pm - 11.00 pm",
-                        "Lawas Stadium Parking Area",
+                        "3.00 petang - 11.00 malam",
+                        "Kawasan Parkir Stadium Lawas",
                         "Festival",
-                        "A community celebration showcasing "
-                                + "local food, culture, traditions "
-                                + "and entertainment."
+                        "Sambutan komuniti yang menampilkan makanan "
+                                + "tempatan, budaya, tradisi dan hiburan."
                 )
         );
-
     }
 
+    // =========================================================
     // ADD EVENT TO MAP
-    private void addEvent(String date, EventData event) {
+    // =========================================================
+
+    private void addEvent(
+            String date,
+            EventData event) {
 
         if (!events.containsKey(date)) {
+
             events.put(
                     date,
                     new ArrayList<>()
             );
         }
+
         events.get(date).add(event);
     }
 
+    // =========================================================
     // DISPLAY CALENDAR
+    // =========================================================
+
     private void displayCalendar() {
+
         calendarGrid.removeAllViews();
 
-        SimpleDateFormat monthFormat = new SimpleDateFormat(
-                "MMMM yyyy",
-                Locale.ENGLISH
-        );
-
+        // Malay month name
+        SimpleDateFormat monthFormat =
+                new SimpleDateFormat(
+                        "MMMM yyyy",
+                        MALAY_LOCALE
+                );
 
         txtMonthYear.setText(
                 monthFormat.format(
@@ -325,55 +404,96 @@ public class CalendarFragment extends Fragment {
                 )
         );
 
-
+        // ==========================================
         // NO EVENT SECTION
+        // ==========================================
+
         txtSelectedDate.setText("");
 
         txtEventCount.setText(
-                "Event (0)"
+                "Acara (0)"
         );
+
         showNoEvent();
 
+        // ==========================================
         // FIRST DAY OF MONTH
-        Calendar firstDay = (Calendar) currentMonth.clone();
+        // ==========================================
+
+        Calendar firstDay =
+                (Calendar) currentMonth.clone();
 
         firstDay.set(
                 Calendar.DAY_OF_MONTH,
                 1
         );
 
-        int firstDayOfWeek = firstDay.get(Calendar.DAY_OF_WEEK);
+        int firstDayOfWeek =
+                firstDay.get(Calendar.DAY_OF_WEEK);
 
-        /* Because Android Calendar starts on Sunday */
+        /*
+         * Android Calendar starts on Sunday.
+         *
+         * We want:
+         *
+         * Isnin | Selasa | Rabu | Khamis |
+         * Jumaat | Sabtu | Ahad
+         */
 
         int offset;
 
         if (firstDayOfWeek == Calendar.SUNDAY) {
+
             offset = 6;
+
         } else {
+
             offset = firstDayOfWeek - 2;
         }
 
+        // ==========================================
         // NUMBER OF DAYS
-        int daysInMonth = currentMonth.getActualMaximum(Calendar.DAY_OF_MONTH);
+        // ==========================================
 
+        int daysInMonth =
+                currentMonth.getActualMaximum(
+                        Calendar.DAY_OF_MONTH
+                );
+
+        // ==========================================
         // EMPTY CELLS
+        // ==========================================
+
         for (int i = 0; i < offset; i++) {
+
             addEmptyDate();
         }
 
+        // ==========================================
         // ADD DATES
-        for (int day = 1; day <= daysInMonth; day++) {
+        // ==========================================
+
+        for (
+                int day = 1;
+                day <= daysInMonth;
+                day++
+        ) {
+
             addDate(day);
         }
 
+        // ==========================================
         // AUTOMATICALLY SELECT EVENT DATE
+        // ==========================================
+
         if (selectedDay != -1) {
-            String selectedKey = getDateKey(
-                    currentMonth.get(Calendar.YEAR),
-                    currentMonth.get(Calendar.MONTH),
-                    selectedDay
-            );
+
+            String selectedKey =
+                    getDateKey(
+                            currentMonth.get(Calendar.YEAR),
+                            currentMonth.get(Calendar.MONTH),
+                            selectedDay
+                    );
 
             selectDate(
                     selectedKey,
@@ -382,44 +502,56 @@ public class CalendarFragment extends Fragment {
         }
     }
 
+    // =========================================================
     // EMPTY CALENDAR CELL
-    private void addEmptyDate() {
-        TextView empty = new TextView(requireContext());
+    // =========================================================
 
-        GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+    private void addEmptyDate() {
+
+        TextView empty =
+                new TextView(requireContext());
+
+        GridLayout.LayoutParams params =
+                new GridLayout.LayoutParams();
 
         params.width = 0;
         params.height = 0;
 
-        params.columnSpec = GridLayout.spec(
-                GridLayout.UNDEFINED,
-                1f
-        );
+        params.columnSpec =
+                GridLayout.spec(
+                        GridLayout.UNDEFINED,
+                        1f
+                );
 
-        params.rowSpec = GridLayout.spec(
-                GridLayout.UNDEFINED,
-                1f
-        );
+        params.rowSpec =
+                GridLayout.spec(
+                        GridLayout.UNDEFINED,
+                        1f
+                );
 
         empty.setLayoutParams(params);
 
-        calendarGrid.addView(
-                empty
-        );
+        calendarGrid.addView(empty);
     }
 
+    // =========================================================
     // ADD DATE
-    private void addDate(int day) {
-        TextView date = new TextView(requireContext());
+    // =========================================================
 
+    private void addDate(int day) {
+
+        TextView date =
+                new TextView(requireContext());
+
+        // ==========================================
         // DATE NUMBER
+        // ==========================================
+
         date.setText(
                 String.valueOf(day)
         );
 
-        date.setTextSize(
-                10
-        );
+        date.setTextSize(10);
 
         date.setGravity(
                 Gravity.CENTER
@@ -433,21 +565,27 @@ public class CalendarFragment extends Fragment {
                 )
         );
 
+        // ==========================================
         // GRID PARAMETERS
-        GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+        // ==========================================
+
+        GridLayout.LayoutParams params =
+                new GridLayout.LayoutParams();
 
         params.width = 0;
         params.height = 0;
 
-        params.columnSpec = GridLayout.spec(
-                GridLayout.UNDEFINED,
-                1f
-        );
+        params.columnSpec =
+                GridLayout.spec(
+                        GridLayout.UNDEFINED,
+                        1f
+                );
 
-        params.rowSpec = GridLayout.spec(
-                GridLayout.UNDEFINED,
-                1f
-        );
+        params.rowSpec =
+                GridLayout.spec(
+                        GridLayout.UNDEFINED,
+                        1f
+                );
 
         params.setMargins(
                 5,
@@ -455,15 +593,24 @@ public class CalendarFragment extends Fragment {
                 5,
                 5
         );
+
         date.setLayoutParams(params);
 
+        // ==========================================
         // CREATE DATE KEY
-        String key = getDateKey(
-                currentMonth.get(Calendar.YEAR),
-                currentMonth.get(Calendar.MONTH),
-                day);
+        // ==========================================
 
+        String key =
+                getDateKey(
+                        currentMonth.get(Calendar.YEAR),
+                        currentMonth.get(Calendar.MONTH),
+                        day
+                );
+
+        // ==========================================
         // HIGHLIGHT EVENT DATE
+        // ==========================================
+
         if (events.containsKey(key)) {
 
             date.setBackgroundResource(
@@ -475,33 +622,49 @@ public class CalendarFragment extends Fragment {
             );
         }
 
+        // ==========================================
         // ALL DATES ARE CLICKABLE
+        // ==========================================
+
         date.setOnClickListener(v -> {
-            selectDate(key,day);
+
+            selectedDay = day;
+
+            selectDate(
+                    key,
+                    day
+            );
         });
 
-        calendarGrid.addView(
-                date
-        );
+        calendarGrid.addView(date);
     }
 
+    // =========================================================
     // SELECT DATE
+    // =========================================================
+
     private void selectDate(
             String key,
             int day) {
 
+        // ==========================================
         // DISPLAY SELECTED DATE
-        Calendar selectedDate = (Calendar) currentMonth.clone();
+        // ==========================================
+
+        Calendar selectedDate =
+                (Calendar) currentMonth.clone();
 
         selectedDate.set(
                 Calendar.DAY_OF_MONTH,
                 day
         );
 
-        SimpleDateFormat selectedFormat = new SimpleDateFormat(
-                "dd MMMM yyyy",
-                Locale.ENGLISH
-        );
+        // Malay selected date
+        SimpleDateFormat selectedFormat =
+                new SimpleDateFormat(
+                        "dd MMMM yyyy",
+                        MALAY_LOCALE
+                );
 
         txtSelectedDate.setText(
                 selectedFormat.format(
@@ -509,47 +672,77 @@ public class CalendarFragment extends Fragment {
                 )
         );
 
+        // ==========================================
         // CHECK EVENTS
+        // ==========================================
+
         if (events.containsKey(key)) {
 
-            List<EventData> selectedEvents = events.get(key);
+            List<EventData> selectedEvents =
+                    events.get(key);
 
             showSelectedEvents(
                     selectedEvents
             );
+
         } else {
+
             showNoEvent();
         }
     }
 
+    // =========================================================
     // SHOW SELECTED EVENTS
-    private void showSelectedEvents(List<EventData> selectedEvents) {
+    // =========================================================
+
+    private void showSelectedEvents(
+            List<EventData> selectedEvents) {
+
         eventContainer.removeAllViews();
 
+        // ==========================================
         // AUTOMATIC EVENT COUNT
-        int count = selectedEvents.size();
+        // ==========================================
+
+        int count =
+                selectedEvents.size();
 
         txtEventCount.setText(
-                "Event (" + count + ")"
+                "Acara (" + count + ")"
         );
 
+        // ==========================================
         // ADD EACH EVENT
+        // ==========================================
+
         for (EventData event : selectedEvents) {
+
             addEventCard(event);
         }
     }
 
+    // =========================================================
     // SHOW NO EVENT
+    // =========================================================
+
     private void showNoEvent() {
+
         eventContainer.removeAllViews();
 
+        // ==========================================
         // AUTOMATIC COUNT
+        // ==========================================
+
         txtEventCount.setText(
-                "Event (0)"
+                "Acara (0)"
         );
 
+        // ==========================================
         // EMPTY CARD
-        LinearLayout emptyCard = new LinearLayout(requireContext());
+        // ==========================================
+
+        LinearLayout emptyCard =
+                new LinearLayout(requireContext());
 
         emptyCard.setOrientation(
                 LinearLayout.VERTICAL
@@ -570,17 +763,22 @@ public class CalendarFragment extends Fragment {
                 R.drawable.calendar_event_card
         );
 
-        LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
-        );
+        LinearLayout.LayoutParams cardParams =
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT
+                );
 
         emptyCard.setLayoutParams(
                 cardParams
         );
 
+        // ==========================================
         // CALENDAR ICON
-        ImageView icon = new ImageView(requireContext());
+        // ==========================================
+
+        ImageView icon =
+                new ImageView(requireContext());
 
         icon.setImageResource(
                 R.drawable.ic_no_event
@@ -592,35 +790,39 @@ public class CalendarFragment extends Fragment {
                         105
                 );
 
-        iconParams.gravity = Gravity.CENTER;
+        iconParams.gravity =
+                Gravity.CENTER;
 
         icon.setLayoutParams(
                 iconParams
         );
 
+        // ==========================================
         // NO EVENT TEXT
-        TextView message = new TextView(requireContext());
+        // ==========================================
+
+        TextView message =
+                new TextView(requireContext());
 
         message.setText(
-                "No Events Available"
+                "Tiada Acara Tersedia"
         );
 
         message.setTextColor(
                 Color.BLACK
         );
 
-        message.setTextSize(
-                13
-        );
+        message.setTextSize(13);
 
         message.setGravity(
                 Gravity.CENTER
         );
 
-        LinearLayout.LayoutParams messageParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
+        LinearLayout.LayoutParams messageParams =
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                );
 
         messageParams.setMargins(
                 0,
@@ -633,24 +835,26 @@ public class CalendarFragment extends Fragment {
                 messageParams
         );
 
+        // ==========================================
         // ADD TO CARD
-        emptyCard.addView(
-                icon
-        );
+        // ==========================================
 
-        emptyCard.addView(
-                message
-        );
+        emptyCard.addView(icon);
 
-        eventContainer.addView(
-                emptyCard
-        );
+        emptyCard.addView(message);
+
+        eventContainer.addView(emptyCard);
     }
 
+    // =========================================================
     // EVENT CARD
-    private void addEventCard(EventData event) {
+    // =========================================================
 
-        LinearLayout card = new LinearLayout(requireContext());
+    private void addEventCard(
+            EventData event) {
+
+        LinearLayout card =
+                new LinearLayout(requireContext());
 
         card.setOrientation(
                 LinearLayout.VERTICAL
@@ -667,10 +871,11 @@ public class CalendarFragment extends Fragment {
                 R.drawable.calendar_event_card
         );
 
-        LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
+        LinearLayout.LayoutParams cardParams =
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                );
 
         cardParams.setMargins(
                 0,
@@ -679,17 +884,23 @@ public class CalendarFragment extends Fragment {
                 6
         );
 
-        card.setLayoutParams(
-                cardParams
-        );
+        card.setLayoutParams(cardParams);
 
+        // ==========================================
         // DATE
-        TextView date = createEventText(
-                event.date
-        );
+        // ==========================================
 
+        TextView date =
+                createEventText(event.date);
+
+        // ==========================================
         // SEPARATOR
-        TextView separator = createEventText("------------------------------------------------------------------------------------------");
+        // ==========================================
+
+        TextView separator =
+                createEventText(
+                        "------------------------------------------------------------------------------------------"
+                );
 
         separator.setTextColor(
                 Color.rgb(
@@ -699,62 +910,60 @@ public class CalendarFragment extends Fragment {
                 )
         );
 
+        // ==========================================
         // EVENT DETAILS
-        TextView title = createEventText(event.title);
+        // ==========================================
 
-        title.setTextSize(
-                14
-        );
+        TextView title =
+                createEventText(event.title);
+
+        title.setTextSize(14);
 
         title.setTypeface(
                 null,
                 Typeface.BOLD
         );
 
-        TextView time = createEventText(event.time);
-        TextView location =createEventText(event.location);
+        TextView time =
+                createEventText(event.time);
 
+        TextView location =
+                createEventText(event.location);
+
+        // ==========================================
         // ADD CONTENT
-        card.addView(
-                date
-        );
+        // ==========================================
 
-        card.addView(
-                separator
-        );
+        card.addView(date);
 
-        card.addView(
-                title
-        );
+        card.addView(separator);
 
-        card.addView(
-                time
-        );
+        card.addView(title);
 
-        card.addView(
-                location
-        );
+        card.addView(time);
 
-        eventContainer.addView(
-                card
-        );
+        card.addView(location);
+
+        eventContainer.addView(card);
     }
 
+    // =========================================================
     // CREATE EVENT TEXT
-    private TextView createEventText(String text) {
-        TextView textView = new TextView(requireContext());
+    // =========================================================
 
-        textView.setText(
-                text
-        );
+    private TextView createEventText(
+            String text) {
+
+        TextView textView =
+                new TextView(requireContext());
+
+        textView.setText(text);
 
         textView.setTextColor(
                 Color.BLACK
         );
 
-        textView.setTextSize(
-                12
-        );
+        textView.setTextSize(12);
 
         textView.setPadding(
                 0,
@@ -762,11 +971,18 @@ public class CalendarFragment extends Fragment {
                 0,
                 2
         );
+
         return textView;
     }
 
+    // =========================================================
     // CREATE DATE KEY
-    private String getDateKey(int year, int month, int day) {
+    // =========================================================
+
+    private String getDateKey(
+            int year,
+            int month,
+            int day) {
 
         return String.format(
                 Locale.ENGLISH,
@@ -777,8 +993,12 @@ public class CalendarFragment extends Fragment {
         );
     }
 
+    // =========================================================
     // EVENT DATA CLASS
+    // =========================================================
+
     private static class EventData {
+
         String title;
         String date;
         String time;
@@ -793,7 +1013,6 @@ public class CalendarFragment extends Fragment {
                 String location,
                 String category,
                 String description) {
-
 
             this.title = title;
             this.date = date;
