@@ -51,7 +51,7 @@ public class Event {
         this.calendarDate = calendarDate;
         this.imageResource = imageResource;
         this.latitude = latitude;
-        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getTitle() {
